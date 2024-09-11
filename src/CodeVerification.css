@@ -1,0 +1,22 @@
+.code-input{
+    width:8%;
+    margin-right:1.5%;
+    border-radius:0%;
+}
+.code-verification-main-content{
+    background-color:white;
+    padding-top:4%;
+    padding-bottom:4%;
+}
+.verify-code-button{
+    width:30%;
+    background-color:#03327C;
+    color:white;
+}
+.verify-code-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    align-items:start;
+    margin-left:14%;
+}

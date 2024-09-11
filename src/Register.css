@@ -1,0 +1,44 @@
+.form{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:900px;
+    height:800px;
+    margin-top:55px;
+    background-color:white;
+    box-shadow:2px blue;   
+}
+h1{
+    font-family:"Doppio One";
+    font-weight:bold;
+}
+
+
+input{
+    width:60%;
+    padding:2.5%;
+    border-radius:25px;
+    border:none;
+    background-color:#EFEDED
+}
+#logo{
+    width:20%;
+    height:20%;
+    border-radius:95%;
+}
+.submit-button{
+    color:white;
+    background-color:#03327C;
+    border-radius:25px;
+    width:29%;
+    height:7%;
+}
+
+.greeting{
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    align-items:start;
+
+}
