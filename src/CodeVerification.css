@@ -7,6 +7,9 @@
     background-color:white;
     padding-top:4%;
     padding-bottom:4%;
+    box-shadow:rgb(161, 161, 237)  2px 2px 6px 6px ;
+    width:65%;
+    margin-left: 18%;
 }
 .verify-code-button{
     width:30%;
@@ -19,4 +22,7 @@
     justify-content:start;
     align-items:start;
     margin-left:14%;
+}
+#forgot-password-back-button{
+    margin-left:8%;
 }

@@ -9,7 +9,7 @@ function Login(){
             <div className="form">
             <img src="./src/assets/Logo.png"  id="logo"/> 
             <div className="greeting">
-            <p style={{fontWeight:"bold"}}>Serene: Escape, Relax, Rejuvenate.</p>
+            {/* <p style={{fontWeight:"bold"}}>Serene: Escape, Relax, Rejuvenate.</p> */}
             <h1 style={{lineHeight:"0"}} >Hello,</h1>
             <h1 style={{lineHeight:"0"}}>Welcome Back</h1>
             </div> 

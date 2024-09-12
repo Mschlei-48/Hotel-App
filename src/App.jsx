@@ -10,6 +10,8 @@ import ForgotPassword from './ForgotPassword'
 import CodeVerification from "./CodeVerification.jsx"
 import ResetPassword from './ResetPassword.jsx'
 import Home from './Home.jsx'
+import Rooms from "./Rooms-Page.jsx"
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
       <Route path="verify-code" element={<CodeVerification/>}/>
       <Route path="reset-password" element={<ResetPassword/>}/>
       <Route path="home" element={<Home/>}/>
+      <Route path="rooms" element={<Rooms/>}/>
     </Route>
     </Routes>
     </BrowserRouter>

@@ -1,13 +1,17 @@
+
+.main-content{
+    width:100%;
+}
 .form{
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    width:900px;
-    height:800px;
+    /* width:80%;
+    height:40%; */
     margin-top:55px;
     background-color:white;
-    box-shadow:2px blue;   
+    box-shadow:2px 2px 4px 4px rgb(80, 80, 139);   
 }
 h1{
     font-family:"Doppio One";
