@@ -67,8 +67,9 @@ h1,h2{
 }
 .act-container{
     background-color:white;
-    width:80%;
-    box-shadow: 2px 2px 2px 2px rgb(211, 153, 45);
+    width:25rem;
+    border-radius:5px;
+    /* box-shadow: 2px 2px 4px 4px rgb(211, 153, 45); */
 }
 
 
@@ -82,7 +83,7 @@ h1,h2{
  background-color: white; 
 }
 .experience-container img{
-    width:50%;
+    width:100%;
 }
 .experience-container img:hover{
     transform: scale(1.02);

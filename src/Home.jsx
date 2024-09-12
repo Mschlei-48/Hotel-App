@@ -10,8 +10,8 @@ function Home(){
                 <div className="nav-bar-content">
                         <img src="./src/assets/Logo2.png" style={{height:"125%",color:"white",opacity:"1",filter:"contrast(300%)"}}/>
                         <ul className="nav-ul">
-                            <li className="nav-li"><button className="nav-buttons" style={{color:"white",opacity:"1",backgroundColor:"transparent"}}>Home</button></li>
-                            <li className="nav-li"><button className="nav-buttons" style={{color:"white",opacity:"1",backgroundColor:"transparent"}}>Rooms</button></li>
+                            <li className="nav-li"><button className="nav-buttons" style={{color:"white",opacity:"1",backgroundColor:"transparent"}} onClick={()=>navigate("/home")}>Home</button></li>
+                            <li className="nav-li"><button className="nav-buttons" style={{color:"white",opacity:"1",backgroundColor:"transparent"}} onClick={()=>navigate("/rooms")}>Rooms</button></li>
                             <li className="nav-li"><button className="nav-buttons" style={{color:"white",opacity:"1",backgroundColor:"transparent"}}>Reservations</button></li>
                             <li className="nav-li"><button className="nav-buttons" style={{color:"white",opacity:"1",backgroundColor:"transparent"}}>About Us</button></li>
                             <li className="nav-li"><button className="nav-buttons" style={{color:"white",opacity:"1",backgroundColor:"transparent"}}>Contact Us</button></li>
@@ -29,31 +29,35 @@ function Home(){
             <div className="outside-act-images">
                 <div className="act-container">
                     <img src="./src/assets/out1.webp" alt="No Image To Display" className="act-image"/>
-                    <h2 style={{lineHeight:"0%"}}>Kid's Pool</h2>
+                    <h4 style={{lineHeight:"0%"}}>Kid's Pool</h4>
                     <p>Kids pool has all the fun activities to get your kids entertained.</p>
                 </div>
 
                 <div className="act-container">
                     <img src="./src/assets/out2.jpg" alt="No Image To Display" className="act-image"/>
-                    <h2 style={{lineHeight:"0%"}}>Segway Races</h2>
+                    <h4 style={{lineHeight:"0%"}}>Segway Races</h4>
                     <p>Segway races keep both adults and teenagers entertained.</p>
                 </div>
 
                 <div className="act-container">
                     <img src="./src/assets/out3.webp" alt="No Image To Display" className="act-image"/>
-                    <h2 style={{lineHeight:"0%"}}>Game Activities</h2>
+                    <h4 style={{lineHeight:"0%"}}>Game Activities</h4>
                     <p>Fun activities keep both adults and teenagers entertained the whole day.</p>
                 </div>
 
                 <div className="act-container">
                     <img src="./src/assets/out4.jpg" alt="No Image To Display" className="act-image"/>
-                    <h2 style={{lineHeight:"0%"}}>Water Splash</h2>
+                    <h4 style={{lineHeight:"0%"}}>Water Splash</h4>
                     <p>Water splash activities for kids on hot scorching summer days.</p>
                 </div>
 
             </div>
+
             <div className="experience-container">
+            <span id="experience-container-img">
+                <h2 style={{lineHeight:"0%",color:"black",display:"flex",alignItems:"start",marginTop:"5%"}}>Get Serene Experience With Us!</h2>
                 <img src="./src/assets/bestHotel.jpg"/>
+            </span>   
                 <h2>Experience the epitome of luxury 
                     at our award-winning hotel, nestled in the heart of 
                     paradise where elegance meets world-class service.
@@ -98,9 +102,8 @@ function Home(){
 
                         <li style={{fontSize:"16px",fontWeight:"bold"}}>Contact Details</li>
                         <br></br>
-                            <li>+27 73 894 7110</li>
-                            <li>mishimakade48@gmail.com</li> 
-                       
+                            <li><span style={{color:"white"}}>☏</span>+27 73 894 7110</li>
+                            <li><span>✉️</span>mishimakade48@gmail.com</li> 
                     </ul>
                 </div>
             </div>

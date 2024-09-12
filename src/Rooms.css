@@ -1,0 +1,14 @@
+.dates-and-guests{
+    display:flex;
+    flex-direction:row;
+    /* align-items: center; */
+    /* justify-content:center; */
+    background-color: white;
+    margin-top:5%;
+    height:30%;
+    width:60%;
+    margin-left: 17%;
+}
+.dates-and-guests label{
+    color:black;
+}
