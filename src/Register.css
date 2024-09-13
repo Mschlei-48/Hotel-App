@@ -1,14 +1,77 @@
+.main-content {
+    width: 100vw;  
+    height: 60vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+}
 
-.main-content{
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+    padding: 40px; 
+    border-radius: 10px; 
+}
+
+h1 {
+    font-family: "Doppio One";
+    font-weight: bold;
+}
+
+input {
+    width: 60%;
+    padding: 2.5%;
+    border-radius: 25px;
+    border: none;
+    background-color: #EFEDED;
+    margin-bottom: 20px; /* Add space between inputs */
+}
+
+#logo {
+    width: 20%;
+    height: 20%;
+    border-radius: 95%;
+}
+
+.submit-button {
+    color: white;
+    background-color: #03327C;
+    border-radius: 25px;
+    width: 29%;
+    height: 7%;
+}
+
+.greeting {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+a {
+    color: #03327C;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+
+
+
+/* .main-content{
     width:100%;
+    display:flex;
+    justify-content: end;
+    align-items:end;
 }
 .form{
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    /* width:80%;
-    height:40%; */
     margin-top:55px;
     background-color:white;
     box-shadow:2px 2px 4px 4px rgb(80, 80, 139);   
@@ -45,4 +108,4 @@ input{
     justify-content:start;
     align-items:start;
 
-}
+} */

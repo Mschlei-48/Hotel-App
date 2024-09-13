@@ -1,5 +1,13 @@
-
-
+/* Main content styles */
+.rooms-main-content{
+    display:flex;
+    flex-direction: column;
+    gap:400px;
+}
+*{
+    color:black;
+}
+/* Nav Bar Styles */
 
 .dates-and-guests{
     display:flex;
@@ -9,9 +17,10 @@
     gap:8%;
     margin-top:5%;
     height:30%;
-    width:80%;
+    width:74%;
     border:2px solid black;
-    margin-left: 9%;
+    margin-left: 11%;
+    border-radius: 3%;
 }
 .dates-and-guests label{
     color:black;
@@ -28,7 +37,7 @@ background-color:white;
    font-weight:bold;
 }
 .select-rooms-guests{
-    width:100%;
+    width:150px;
     padding:10%;
 }
 .emoji{
@@ -36,7 +45,65 @@ background-color:white;
 }
 
 
+/* Filter Sort Content Styles */
+.filter-content{
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items: start;
+    width:78vw;
+}
+.filter-sort-content{
+    display:flex;
+    flex-direction:row;
+    width:78vw;
+    gap:54%;
+}
+.filter-buttons{
+    border-radius: 0;
+    border:2px solid black;
+}
 
-/* <option>Single Queen Room</option>
-<option>Family Queen Room</option>
-<option>Kids Queen Room</option> */
+/* Rooms Styles */
+.room-cards{
+    width:28.5%;
+    background-color:white;
+    border-radius:4%;
+    height:60vh;
+}
+.room-images{
+    width:100%;
+    height:40%;
+    border-top-left-radius: 4%;
+    border-top-right-radius: 4%;
+}
+.Rooms{
+    display:flex;
+    flex-wrap: wrap;
+    gap:5%;
+    row-gap:45px;
+}
+.Rooms span,p{
+    font-size:0.9rem;
+    line-height: 0.5;
+}
+.Rooms h3{
+    line-height: 0.05;
+}
+.Rooms p,h3,h4{
+    display:flex;
+    align-items:start;
+    justify-content:start;
+    margin-left:5%;
+}
+.stars{
+text-align:start
+}
+.rooms-filter{
+    width:98.5vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* height:50vh; */
+    
+}

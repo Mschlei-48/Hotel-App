@@ -5,7 +5,7 @@ import "./Rooms.css";
 function Rooms() {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="rooms-main-content">
       <div className="nav-bar">
         <div className="nav-bar-content">
           <img
@@ -125,13 +125,7 @@ function Rooms() {
             ></input>
           </div>
 
-          <div
-            className="guest_container"
-            style={{ display: "flex", gap: "22%" }}
-          >
-            <div>
-              <span className="emoji">👥</span>
-            </div>
+          <div className="guest_container">
             <div>
               <label className="filter-label">Guests</label>
               <br></br>
@@ -147,20 +141,14 @@ function Rooms() {
             </div>
           </div>
 
-          <div
-            className="type-rooms_container"
-            style={{ display: "flex", gap: "22%" }}
-          >
-            <div>
-              <span className="emoji">🚪</span>
-            </div>
+          <div className="type-rooms_container">
             <div>
               <label className="filter-label">RoomType</label>
               <br></br>
               <select className="select-rooms-guests">
-                <option>Famlily Queen Room</option>
-                <option>Singl Room</option>
-                <option>Kig Room</option>
+                <option>Family Queen Room</option>
+                <option>Single Room</option>
+                <option>King Room</option>
                 <option>Triple Room</option>
                 <option>Suite</option>
                 <option>Quad Room</option>
@@ -168,11 +156,7 @@ function Rooms() {
             </div>
           </div>
 
-          <div
-            classsName="rooms-container"
-            style={{ display: "flex", gap: "22%" }}
-          >
-            <span className="emoji">🛏</span>
+          <div classsName="rooms-container">
             <div>
               <label className="filter-label">Rooms</label>
               <br></br>
@@ -184,6 +168,258 @@ function Rooms() {
               </select>
             </div>
           </div>
+        </div>
+      </div>
+      <br></br>
+      {/* Filter Content */}
+      <div className="rooms-filter">
+        <div>
+      {/* <br></br> */}
+      <div className="filter-content">
+        <h2>Your perfect stay-cation start here!!</h2>
+        <div className="filter-sort-content">
+          <div className="filter">
+            <button className="filter-buttons">Pet friendly</button>
+            <button className="filter-buttons" style={{ marginLeft: "16px" }}>
+              Indoor Pool
+            </button>
+          </div>
+          <div className="sort">
+            <label style={{ fontWeight: "bold" }}>Sort By: </label>
+            <select
+              style={{
+                width: "7vw",
+                height: "100%",
+                borderRadius: "10%",
+                fontWeight: "bold",
+              }}
+            >
+              <option>Ratings</option>
+              <option>Price</option>
+            </select>
+          </div>
+        </div>
+        {/* Rooms Content */}
+        <br></br>
+        <div className="Rooms">
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+          </div>
+
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+          </div>
+
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+          </div>
+
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+          </div>
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+          </div>
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+            <span className="stars">⭐</span>
+          </div>
+
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+          </div>
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+          </div>
+          <div className="room-cards">
+            <img src="./src/assets/room1.jpeg" className="room-images" />
+            <h4>Triple Room</h4>
+            <p>
+              <span>🚿</span>Three bathrooms
+            </p>
+            <p>
+              <span>📶</span>Unlimited Wifi
+            </p>
+            <p>
+              <span>🧑‍🤝‍🧑</span>3 people
+            </p>
+            <h4>R450</h4>
+            <span className="stars">⭐</span>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      {/* Footer */}
+      <div className="footer-main-content">
+        <div className="footer">
+          <div>
+            <img
+              src="./src/assets/Logo2.png"
+              alt="No image to display"
+              style={{ width: "50%", lineHeight: "0%" }}
+            />
+          </div>
+          <br></br>
+          <div className="details">
+            <ul
+              style={{
+                color: "white",
+                columns: "3",
+                textAlign: "start",
+                listStyle: "none",
+                padding: "0",
+                marginTop: "8%",
+              }}
+            >
+              <li style={{ fontSize: "16px", fontWeight: "bold" }}>
+                Physical Address
+              </li>
+              <br></br>
+              <li>1911 Daliwe Location</li>
+              <li>Cathcart</li>
+              <li>5310</li>
+              <li>South Africa</li>
+
+              <li style={{ fontSize: "16px", fontWeight: "bold" }}>
+                Postal Address
+              </li>
+              <br></br>
+              <li>1911 Daliwe Location</li>
+              <li>Cathcart</li>
+              <li>5310</li>
+              <li>South Africa</li>
+
+              <li style={{ fontSize: "16px", fontWeight: "bold" }}>
+                Contact Details
+              </li>
+              <br></br>
+              <li>
+                <span style={{ color: "white" }}>☏</span>+27 73 894 7110
+              </li>
+              <li>
+                <span>✉️</span>mishimakade48@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p style={{ color: "white", fontSize: "12px" }}>
+            &copy; 2024 Serene Hotel, 1911 Cathcart
+          </p>
         </div>
       </div>
     </div>

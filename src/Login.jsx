@@ -6,10 +6,10 @@ function Login(){
     const navigate=useNavigate()
     return(
         <div className="main-content">
+            <div>
             <div className="form">
             <img src="./src/assets/Logo.png"  id="logo"/> 
             <div className="greeting">
-            {/* <p style={{fontWeight:"bold"}}>Serene: Escape, Relax, Rejuvenate.</p> */}
             <h1 style={{lineHeight:"0"}} >Hello,</h1>
             <h1 style={{lineHeight:"0"}}>Welcome Back</h1>
             </div> 
@@ -22,6 +22,7 @@ function Login(){
                 <button className="submit-button" style={{fontSize:"25px",fontFamily:"Doppio One",textAlign:"center"}} onClick={()=>navigate("/home")}>Login</button>
                 
                 <p style={{fontWeight:"bold"}}>Do not have an account? <a onClick={()=>navigate("/")} style={{cursor:"pointer"}}>Register</a></p>
+            </div>
             </div>
         </div>
     )
