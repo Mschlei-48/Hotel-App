@@ -17,15 +17,15 @@ function CodeVerification() {
         <br></br>
         <img src="./src/assets/Logo.png" id="logo" />
         <div className="verify-code-content">
-          <h1 style={{ lineHeight: "0%", fontFamily: "Doppio One" }}>
+          <h1 id="otp-verification-h1-text" style={{ lineHeight: "0%", fontFamily: "Doppio One" }}>
             OTP Verification
           </h1>
           <p
             style={{
               lineHeight: "58%",
               fontFamily: "Doppio One",
-              fontSize: "48",
             }}
+            id="enter-code-p-text"
           >
             Enter the verification code sent to your email address.
           </p>
@@ -41,14 +41,13 @@ function CodeVerification() {
           className="verify-code-button"
           onClick={() => navigate("/reset-password")}
           style={{
-            fontSize: "20px",
             fontFamily: "Doppio One",
             textAlign: "center",
           }}
         >
           Verify
         </button>
-        <p style={{ fontFamily: "Doppio One", fontSize: "48" }}>
+        <p id="not-receive-code-text"style={{ fontFamily: "Doppio One"}}>
           Did no receive code? <a>Resend</a>
         </p>
       </div>

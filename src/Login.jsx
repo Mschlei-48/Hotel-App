@@ -10,8 +10,8 @@ function Login(){
             <div className="form">
             <img src="./src/assets/Logo.png"  id="logo"/> 
             <div className="greeting">
-            <h1 style={{lineHeight:"0"}} >Hello,</h1>
-            <h1 style={{lineHeight:"0"}}>Welcome Back</h1>
+            <h1 id="greet1" style={{lineHeight:"0"}} >Hello,</h1>
+            <h1 id="greet2" style={{lineHeight:"0"}}>Welcome Back</h1>
             </div> 
                 <br></br>
                 <input name="email" type="email" placeholder="Enter Email Address"></input>

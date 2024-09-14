@@ -1,37 +1,60 @@
+@media(min-width:768px){
+    #home-logo{
+        height: 95%;
+        width: 10%;
+        opacity: 1;
+        filter: contrast(300%);
+        z-index:10;
+    }
+    .footer-headings{
+        font-size: 16px;
+        font-weight: bold;
+    }
 .home-main-content{
     width:100%;
 }
+#home-book-a-room-button{
+    font-size:1.5rem;
+    height:40%;
+    width: 15%;
+}
+/* * {
+    outline: 1px solid red;
+} */
 
 .nav-bar{
     background-image:url("./src/assets/nav-image.jpg");
     background-size:cover;
     background-repeat:no-repeat;
     background-position:center;
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:35%;
+    height:50vh;
+    width:100%;
+    z-index:1;
 }
 h1,h2{
-    font-family:"Doppio One"
+    font-family:"Doppio One";
 }
 .nav-bar-content{
     width:100%;
     height:40%;
     display: flex;
     justify-content: space-around;
+    gap:2%;
 }
 .nav-ul {
     list-style: none;
-    display:flex;
-    justify-content: space-between;
-    margin-top:3%;
+    display: flex;
+    justify-content: space-around; /* Or keep space-between if preferred */
+    margin-top: 3%;
+    padding: 0;
+    max-width: 95%; /* Ensures the nav bar doesn't overflow */
+    overflow-x: hidden; /* Ensures that any overflow is hidden */
 }
+
 
 /* Outside activities style */
 .outside-act{
-    margin-top:23%;
+    margin-top:7%;
     display:flex;
     flex-direction:column;
     align-items:start;
@@ -40,14 +63,15 @@ h1,h2{
     color:black;
 }
 .outside-and-activities{
-    width:98vw;
+    width:100%;
     flex-direction: column;
     display:flex;
     align-items:center;
     justify-content: center;
 }
 .nav-buttons{
-    width:130px;
+    width:7rem;
+    font-size:0.88rem;
 }
 
 .act-image{
@@ -138,8 +162,8 @@ h1,h2{
     display:flex;
     flex-direction:row;
     background-color:black;
-    margin-top:2%;
-    width:98.7vw;
+    margin-top:12%;
+    width:100%;
     
 }
 
@@ -158,4 +182,453 @@ h1,h2{
 }
 .details ul li:hover{
     color:#646cff;
+}
+#copyright-text{
+    color: white;
+     font-size: 12px;
+}
+}
+
+@media(max-width:768px) and (min-width:480px){
+    #home-logo{
+        width:20%;
+        height:55%;        
+        opacity: 1;
+        filter: contrast(500%);
+        z-index:20;
+    }
+    .h1-text{
+        font-size:1.5rem;
+    }
+    .h2-text{
+        font-size:1rem;
+    }
+    .h4-text{
+        font-size:0.5rem
+    }
+   .act-container p{
+    font-size:0.5rem;
+   }
+    h1{
+        font-size:1.5rem;
+    }
+    /* * {
+    outline: 1px solid red;
+} */
+    .home-main-content{
+        width:100%;
+    }
+    #home-book-a-room-button{
+        font-size:1rem;
+        height:40%;
+        width: 25%;
+    }
+    /* * {
+        outline: 1px solid red;
+    } */
+    
+    .nav-bar{
+        background-image:url("./src/assets/nav-image.jpg");
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position:center;
+        height:50vh;
+        width:100%;
+        z-index:1;
+    }
+    h1,h2{
+        font-family:"Doppio One";
+    }
+    .nav-bar-content{
+        width:100%;
+        height:40%;
+        display: flex;
+        justify-content: space-around;
+        gap:2%;
+    }
+    .nav-ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around; /* Or keep space-between if preferred */
+        margin-top: 3%;
+        padding: 0;
+        max-width: 95%; /* Ensures the nav bar doesn't overflow */
+        overflow-x: hidden; /* Ensures that any overflow is hidden */
+    }
+    
+    
+    /* Outside activities style */
+    .outside-act{
+        margin-top:7%;
+        display:flex;
+        flex-direction:column;
+        align-items:start;
+        height:100%;
+        width:100%;
+        color:black;
+    }
+    .outside-and-activities{
+        width:100%;
+        flex-direction: column;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+    }
+    .nav-buttons{
+        width:2.5rem;
+        font-size:0.3rem;
+    }
+    
+    .act-image{
+        width:100%;
+        height:45%;
+    }
+
+    .act-image:hover{
+        transform: scale(1.1);
+    }
+    .outside-act-images{
+        display:flex;
+        flex-direction:row;
+        margin-top:2%;
+        color:black;
+        gap:5%;
+       
+    }
+    .outside-act-images p{
+        width:90%;
+        text-align:start;
+        margin-left:4%;
+        line-height: 1.2;
+    }
+    .act-container{
+        background-color:white;
+        width:20rem;
+        border-radius:5px;
+    
+    }
+    
+    
+    /* Experience style */
+    .experience-container{
+     display:flex;
+     flex-direction:row; 
+     margin-top:10%;
+     justify-content: start; 
+     gap:4%;
+     background-color: white; 
+    }
+    .experience-container img{
+        width:100%;
+    }
+    .experience-container img:hover{
+        transform: scale(1.02);
+    }
+    .experience-container h2{
+        width:100%;
+        display:flex;
+        align-items: center;
+        color:black;
+        text-align: start;
+        width:90%;
+    }
+    
+    /* Vision style */
+    
+    .vision-container{
+        margin-top:10%;
+        display:flex;
+        flex-direction:column;
+        justify-content:start;
+        align-items:start;
+        color:black;
+    }
+    .vision-container img{
+        width:80vw;
+        height:35%;
+        overflow-x: hidden;
+    }
+    .vision{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        overflow-x: hidden;
+    }
+    
+    /* Book room style */
+    .home-book{
+        margin-top:10%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        color:black;
+        overflow-x: hidden;
+    }
+    .home-book h1{
+        font-size:1.5rem;
+        overflow-x: hidden;
+    }
+    
+    
+    /* Footer style */
+    .footer{
+        display:flex;
+        flex-direction:row;
+        background-color:black;
+        margin-top:12%;
+        width:100%;
+        overflow-x: hidden;
+        
+    }
+    
+    .footer-main-content{
+        /* margin-top:40%; */
+        height:40%;
+        display:flex;
+        flex-direction:column;
+        overflow-x: hidden;
+    }
+    .footer--main-content{
+        margin-top:0;
+        overflow-x: hidden;
+    }
+    .footer-headings{
+        font-size: 0.5rem;
+        font-weight: bold;
+        overflow-x: hidden;
+    }
+    .details ul li{
+        font-size:0.3rem;
+        color:white;
+        overflow-x: hidden;
+    }
+    .details ul li:hover{
+        color:#646cff;
+    }
+    #copyright-text{
+        color: white;
+         font-size: 0.3rem;
+    }
+}
+
+@media(min-width:320px) and (max-width:480px){
+    #home-logo{
+        width:20%;
+        height:55%;        
+        opacity: 1;
+        filter: contrast(500%);
+        z-index:20;
+    }
+    .h1-text{
+        font-size:1rem;
+    }
+    .h2-text{
+        font-size:0.5rem;
+    }
+    .h4-text{
+        font-size:0.3rem
+    }
+   .act-container p{
+    font-size:0.25rem;
+   }
+    h1{
+        font-size:1rem;
+    }
+    /* * {
+    outline: 1px solid red;
+} */
+    .home-main-content{
+        width:100%;
+    }
+    #home-book-a-room-button{
+        font-size:1rem;
+        height:40%;
+        width: 25%;
+    }
+    /* * {
+        outline: 1px solid red;
+    } */
+    
+    .nav-bar{
+        background-image:url("./src/assets/nav-image.jpg");
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position:center;
+        height:30vh;
+        width:100%;
+        z-index:1;
+    }
+    h1,h2{
+        font-family:"Doppio One";
+    }
+    .nav-bar-content{
+        width:100%;
+        height:40%;
+        display: flex;
+        justify-content: space-around;
+        gap:2%;
+    }
+    .nav-ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around; /* Or keep space-between if preferred */
+        margin-top: 3%;
+        padding: 0;
+        max-width: 95%; /* Ensures the nav bar doesn't overflow */
+        overflow-x: hidden; /* Ensures that any overflow is hidden */
+    }
+    
+    
+    /* Outside activities style */
+    .outside-act{
+        margin-top:7%;
+        display:flex;
+        flex-direction:column;
+        align-items:start;
+        height:100%;
+        width:100%;
+        color:black;
+    }
+    .outside-and-activities{
+        width:100%;
+        flex-direction: column;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+    }
+    .nav-buttons{
+        width:2.5rem;
+        font-size:0.3rem;
+    }
+    
+    .act-image{
+        width:100%;
+        height:45%;
+    }
+
+    .act-image:hover{
+        transform: scale(1.1);
+    }
+    .outside-act-images{
+        display:flex;
+        flex-direction:row;
+        margin-top:2%;
+        color:black;
+        gap:5%;
+       
+    }
+    .outside-act-images p{
+        width:90%;
+        text-align:start;
+        margin-left:4%;
+        line-height: 1.2;
+    }
+    .act-container{
+        background-color:white;
+        width:20rem;
+        border-radius:5px;
+    
+    }
+    
+    
+    /* Experience style */
+    .experience-container{
+     display:flex;
+     flex-direction:row; 
+     margin-top:10%;
+     justify-content: start; 
+     gap:4%;
+     background-color: white; 
+    }
+    .experience-container img{
+        width:100%;
+    }
+    .experience-container img:hover{
+        transform: scale(1.02);
+    }
+    .experience-container h2{
+        width:100%;
+        display:flex;
+        align-items: center;
+        color:black;
+        text-align: start;
+        /* width:90%; */
+    }
+    
+    /* Vision style */
+    
+    .vision-container{
+        margin-top:10%;
+        display:flex;
+        flex-direction:column;
+        justify-content:start;
+        align-items:start;
+        color:black;
+    }
+    .vision-container img{
+        width:80vw;
+        height:35%;
+        overflow-x: hidden;
+    }
+    .vision{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        overflow-x: hidden;
+    }
+    
+    /* Book room style */
+    .home-book{
+        margin-top:10%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        color:black;
+        overflow-x: hidden;
+    }
+    .home-book h1{
+        font-size:1.5rem;
+        overflow-x: hidden;
+    }
+    
+    
+    /* Footer style */
+    .footer{
+        display:flex;
+        flex-direction:row;
+        background-color:black;
+        margin-top:12%;
+        width:100%;
+        overflow-x: hidden;
+        
+    }
+    
+    .footer-main-content{
+        /* margin-top:40%; */
+        height:40%;
+        display:flex;
+        flex-direction:column;
+        overflow-x: hidden;
+    }
+    .footer--main-content{
+        margin-top:0;
+        overflow-x: hidden;
+    }
+    .footer-headings{
+        font-size: 0.5rem;
+        font-weight: bold;
+        overflow-x: hidden;
+    }
+    .details ul li{
+        font-size:0.3rem;
+        color:white;
+        overflow-x: hidden;
+    }
+    .details ul li:hover{
+        color:#646cff;
+    }
+    #copyright-text{
+        color: white;
+         font-size: 0.3rem;
+    }
 }

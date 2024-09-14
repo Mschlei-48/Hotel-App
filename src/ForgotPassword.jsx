@@ -19,16 +19,16 @@ function ForgotPassword() {
           <img src="./src/assets/Logo.png" id="logo" />
         </div>
         <div id="forgot-password-form">
-          <h1 style={{ lineHeight: "0%" }}>Forgot Password?</h1>
-          <p style={{ lineHeight: "0%", fontFamily: "Dhyana", fontSize: "48" }}>
+          <h1 className="forgot-password-text" style={{ lineHeight: "0%" }}>Forgot Password?</h1>
+          <p className="dont-worry-text" style={{ lineHeight: "0%", fontFamily: "Dhyana", fontSize: "48" }}>
             Dont worry, it happens. Enter the email address linked to
           </p>
-          <p style={{ lineHeight: "0%", fontFamily: "Dhyana", fontSize: "48" }}>
+          <p className="dont-worry-text" style={{ lineHeight: "0%", fontFamily: "Dhyana", fontSize: "48" }}>
             your account below, and a codes will be sent.
           </p>
 
           <label for="email">
-            <h2>Email</h2>
+            <h2 className="forgot-password-text">Email</h2>
           </label>
           <input
             placeholder="Enter Email Address"
@@ -41,7 +41,7 @@ function ForgotPassword() {
           id="send-code-button"
           onClick={() => navigate("/verify-code")}
           style={{
-            fontSize: "20px",
+            // fontSize: "20px",
             fontFamily: "Doppio One",
             textAlign: "center",
           }}

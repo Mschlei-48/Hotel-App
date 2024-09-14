@@ -1,64 +1,202 @@
-.main-content {
-    width: 100vw;  
-    height: 60vh; 
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
+/* Mobile Device */
+/* @media(max-width:480px) */
+/* Desktop */
+/* @media(max-width:2590px) and (min-width:768px) */
+/* Tablet Device */
+/* @media(max-width:768px) and (min-width:480px) */
+@media(min-width:768px){
+
+    .main-content {
+        width: 100vw;  
+        height: 60vh; 
+        display: flex;
+        justify-content: center; 
+        align-items: center;     
+    }
+    
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+        padding: 40px; 
+        border-radius: 10px; 
+    }
+    
+    h1 {
+        font-family: "Doppio One";
+        font-weight: bold;
+    }
+    
+    input {
+        width: 60%;
+        padding: 2.5%;
+        border-radius: 25px;
+        border: none;
+        background-color: #EFEDED;
+        margin-bottom: 20px; /* Add space between inputs */
+    }
+    
+    #logo {
+        width: 20%;
+        height: 20%;
+        border-radius: 95%;
+    }
+    
+    .submit-button {
+        color: white;
+        background-color: #03327C;
+        border-radius: 25px;
+        width: 29%;
+        height: 7%;
+    }
+    
+    .greeting {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+    
+    a {
+        color: #03327C;
+        text-decoration: none;
+        margin-top: 10px;
+    }
+    
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
-    padding: 40px; 
-    border-radius: 10px; 
+@media(max-width:768px) and (min-width:480px){
+    .main-content {
+        width: 100vw;  
+        height: 50vh; 
+        display: flex;
+        justify-content: center; 
+        align-items: center;     
+    }
+    
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+        padding: 40px; 
+        border-radius: 10px; 
+    }
+    
+    h1 {
+        font-family: "Doppio One";
+        font-weight: bold;
+    }
+    
+    input {
+        width: 60%;
+        padding: 2.5%;
+        border-radius: 25px;
+        border: none;
+        background-color: #EFEDED;
+        margin-bottom: 5%; /* Add space between inputs */
+    }
+    
+    #logo {
+        width: 20%;
+        height: 20%;
+        border-radius: 95%;
+    }
+    
+    .submit-button {
+        color: white;
+        background-color: #03327C;
+        border-radius: 25px;
+        width: 29%;
+        height: 7%;
+    }
+    
+    .greeting {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+    
+    a {
+        color: #03327C;
+        text-decoration: none;
+        margin-top: 10px;
+    }
 }
 
-h1 {
-    font-family: "Doppio One";
-    font-weight: bold;
+@media(min-width:320px) and (max-width:480px){
+
+    .main-content {
+        width: 100vw;  
+        height: 50vh; 
+        display: flex;
+        justify-content: center; 
+        align-items: center;     
+    }
+
+    
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+        padding: 40px; 
+        border-radius: 10px; 
+    }
+    
+    h1 {
+        font-family: "Doppio One";
+        font-weight: bold;
+    }
+    
+    input {
+        width: 60%;
+        padding: 2.5%;
+        border-radius: 25px;
+        border: none;
+        background-color: #EFEDED;
+        margin-bottom: 5%; /* Add space between inputs */
+    }
+    
+    #logo {
+        width: 20%;
+        height: 20%;
+        border-radius: 95%;
+    }
+    
+    .submit-button {
+        color: white;
+        background-color: #03327C;
+        border-radius: 25px;
+        width: 52%;
+        height: 7%;
+        font-size:2px;
+    }
+    
+    .greeting {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+    #greet1,#greet2{
+        font-size:1.5rem;
+    }
+    
+    a {
+        color: #03327C;
+        text-decoration: none;
+        margin-top: 10px;
+    }
 }
-
-input {
-    width: 60%;
-    padding: 2.5%;
-    border-radius: 25px;
-    border: none;
-    background-color: #EFEDED;
-    margin-bottom: 20px; /* Add space between inputs */
-}
-
-#logo {
-    width: 20%;
-    height: 20%;
-    border-radius: 95%;
-}
-
-.submit-button {
-    color: white;
-    background-color: #03327C;
-    border-radius: 25px;
-    width: 29%;
-    height: 7%;
-}
-
-.greeting {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-}
-
-a {
-    color: #03327C;
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-
 
 
 /* .main-content{

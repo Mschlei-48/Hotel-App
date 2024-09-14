@@ -202,7 +202,7 @@ function Rooms() {
         {/* Rooms Content */}
         <br></br>
         <div className="Rooms">
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
@@ -222,7 +222,7 @@ function Rooms() {
             <span className="stars">⭐</span>
           </div>
 
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
@@ -242,7 +242,7 @@ function Rooms() {
             <span className="stars">⭐</span>
           </div>
 
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
@@ -262,7 +262,7 @@ function Rooms() {
             <span className="stars">⭐</span>
           </div>
 
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
@@ -279,7 +279,7 @@ function Rooms() {
             <span className="stars">⭐</span>
             <span className="stars">⭐</span>
           </div>
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
@@ -296,7 +296,7 @@ function Rooms() {
             <span className="stars">⭐</span>
             <span className="stars">⭐</span>
           </div>
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
@@ -314,7 +314,7 @@ function Rooms() {
             <span className="stars">⭐</span>
           </div>
 
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
@@ -329,7 +329,7 @@ function Rooms() {
             <h4>R450</h4>
             <span className="stars">⭐</span>
           </div>
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
@@ -344,7 +344,7 @@ function Rooms() {
             <h4>R450</h4>
             <span className="stars">⭐</span>
           </div>
-          <div className="room-cards">
+          <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
             <h4>Triple Room</h4>
             <p>
