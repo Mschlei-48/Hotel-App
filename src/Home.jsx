@@ -205,7 +205,7 @@ function Home() {
             backgroundColor: "#D9D9D9",
             border: "2px solid black",
           }}
-        >
+        onClick={()=>navigate("/rooms")}>
           Book a Room
         </button>
       </div>
@@ -262,7 +262,7 @@ function Home() {
             </ul>
           </div>
         </div>
-        <div>
+        <div style={{backgroundColor:"black",paddingTop:"2%",paddingBottom:"1%",width:"98.7vw"}}>
           <p style={{ color: "white", fontSize: "12px" }}>
             &copy; 2024 Serene Hotel, 1911 Cathcart
           </p>

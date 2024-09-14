@@ -2,7 +2,7 @@
 .rooms-main-content{
     display:flex;
     flex-direction: column;
-    gap:400px;
+    gap:330px;
 }
 *{
     color:black;
@@ -15,11 +15,11 @@
     background-color: white;
     align-items: center;
     gap:8%;
-    margin-top:5%;
+    margin-top:2%;
     height:30%;
-    width:74%;
+    width:55%;
     border:2px solid black;
-    margin-left: 11%;
+    margin-left: 20%;
     border-radius: 3%;
 }
 .dates-and-guests label{
@@ -37,8 +37,8 @@ background-color:white;
    font-weight:bold;
 }
 .select-rooms-guests{
-    width:150px;
-    padding:10%;
+    width:75px;
+    padding:5%;
 }
 .emoji{
     font-size: 40px;

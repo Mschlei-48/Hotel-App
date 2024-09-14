@@ -416,7 +416,7 @@ function Rooms() {
             </ul>
           </div>
         </div>
-        <div>
+        <div style={{backgroundColor:"black",paddingTop:"2%",paddingBottom:"1%",width:"100vw"}}>
           <p style={{ color: "white", fontSize: "12px" }}>
             &copy; 2024 Serene Hotel, 1911 Cathcart
           </p>
