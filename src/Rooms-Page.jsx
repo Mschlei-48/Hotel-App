@@ -10,12 +10,7 @@ function Rooms() {
         <div className="nav-bar-content">
           <img
             src="./src/assets/Logo2.png"
-            style={{
-              height: "125%",
-              color: "white",
-              opacity: "1",
-              filter: "contrast(300%)",
-            }}
+            id="rooms-logo"
           />
           <ul className="nav-ul">
             <li className="nav-li">
@@ -186,13 +181,7 @@ function Rooms() {
           </div>
           <div className="sort">
             <label style={{ fontWeight: "bold" }}>Sort By: </label>
-            <select
-              style={{
-                width: "7vw",
-                height: "100%",
-                borderRadius: "10%",
-                fontWeight: "bold",
-              }}
+            <select id="sort-by-content"
             >
               <option>Ratings</option>
               <option>Price</option>
@@ -362,6 +351,10 @@ function Rooms() {
         </div>
       </div>
       </div>
+      </div>
+      {/* Next Button */}
+      <div className="next-button-container">
+        <button className="next-button">Next</button>
       </div>
       {/* Footer */}
       <div className="footer-main-content">

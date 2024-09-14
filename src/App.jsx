@@ -12,6 +12,9 @@ import ResetPassword from './ResetPassword.jsx'
 import Home from './Home.jsx'
 import Rooms from "./Rooms-Page.jsx"
 import Room from './Room.jsx'
+import BookRoom from './BookRoom.jsx'
+
+
 
 
 function App() {
@@ -28,6 +31,7 @@ function App() {
       <Route path="home" element={<Home/>}/>
       <Route path="rooms" element={<Rooms/>}/>
       <Route path="room" element={<Room/>}/>
+      <Route path="book-room" element={<BookRoom/>}/>
     </Route>
     </Routes>
     </BrowserRouter>

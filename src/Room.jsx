@@ -6,24 +6,113 @@ function Room() {
     const navigate=useNavigate()
   return (
     <div className="room-main-content">
-        <div className="Nav-Bar">
-            <h1>Nav Bar</h1>
+        <div className="nav-bar">
+        <div className="nav-bar-content">
+          <img
+          id="home-logo"
+            src="./src/assets/Logo2.png"
+          />
+          <ul className="nav-ul">
+            <li className="nav-li">
+              <button
+                className="nav-buttons"
+                style={{
+                  color: "white",
+                  opacity: "1",
+                  backgroundColor: "transparent",
+                }}
+                onClick={() => navigate("/home")}
+              >
+                Home
+              </button>
+            </li>
+            <li className="nav-li">
+              <button
+                className="nav-buttons"
+                style={{
+                  color: "white",
+                  opacity: "1",
+                  backgroundColor: "transparent",
+                }}
+                onClick={() => navigate("/rooms")}
+              >
+                Rooms
+              </button>
+            </li>
+            <li className="nav-li">
+              <button
+                className="nav-buttons"
+                style={{
+                  color: "white",
+                  opacity: "1",
+                  backgroundColor: "transparent",
+                }}
+              >
+                Reservations
+              </button>
+            </li>
+            <li className="nav-li">
+              <button
+                className="nav-buttons"
+                style={{
+                  color: "white",
+                  opacity: "1",
+                  backgroundColor: "transparent",
+                }}
+              >
+                About Us
+              </button>
+            </li>
+            <li className="nav-li">
+              <button
+                className="nav-buttons"
+                style={{
+                  color: "white",
+                  opacity: "1",
+                  backgroundColor: "transparent",
+                }}
+              >
+                Contact Us
+              </button>
+            </li>
+            <li className="nav-li">
+              <button
+                className="nav-buttons"
+                style={{
+                  color: "white",
+                  opacity: "1",
+                  backgroundColor: "transparent",
+                }}
+                onClick={() => navigate("/login")}
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
         </div>
+        <h1 className="h1-text" style={{ color: "white" }}>Get the best deals at Serene Hotel!!</h1>
+      </div>
+        
 
       {/* Room Content (Images)*/}
-      <div className="room-img-container" style={{backgroundColor:"black"}}>
+      <div className="room-img-container" style={{backgroundColor:"white"}}>
                 <div>
                     <img src="./src/assets/room1.jpeg" alt="No Image to Display" id="room-img"/>
                 </div>
-                <div>
-                    <img src="./src/assets/bathroom.jpg" className="room-imgs"/>
+                <div className="imgs-room">
+                  <div>
+                  <img src="./src/assets/bathroom.jpg" className="room-imgs"/>
+                  </div>
+                    <div>
                     <img src="./src/assets/view1.jpg" className="room-imgs"/>
+                    </div>
+                    
                 </div>
       </div>
       {/* Room Content (Information)*/}
-      <div className="room-info-container" style={{backgroundColor:"yellow"}}>
-        <div>
-                <h3>About the Room</h3>
+      <div className="room-info-container">
+        <div className="about-the-room-container">
+                <h2>About the Room</h2>
                 <p>
                 A queen room typically features a spacious queen-sized bed with
                  plush bedding, offering a perfect balance of comfort and elegance. 
@@ -40,18 +129,28 @@ function Room() {
                  scenic views, enhancing the overall experience.
                 </p>
                 </div>
-                <div>
-                    <h3>Facilities</h3>
-                    <p>Free Wifi</p>
-                    <p>Television</p>
-                    <p>Pet-Friendly</p>
-                    <p>Indoor Swimming</p>
-                    <p>Indoor Gym</p>
+                <hr></hr>
+                <div className="facilities-container">
+                  <div style={{width:"50%"}}>
+                    <h2>Facilities</h2>
+                    <p><span>📶</span>Free Wifi</p>
+                    <p><span>📺</span>Television</p>
+                    <p><span>🐕</span>Pet-Friendly</p>
+                    <p><span>🏊‍♀️</span>Indoor Pool</p>
+                    <p><span>💪</span>Indoor Gym</p>
+                    </div>
+                    <div style={{width:"50%"}}>
+                        <h2 style={{width:"100%",display:"flex",alignItems:"start",justifyContent:"start"}}>Room Availabilty:</h2>
+                        <h5 style={{width:"100%",display:"flex",alignItems:"start",justifyContent:"start",marginLeft:"6%"}}>From-Wed, 2/09/2024</h5>
+                        <h5 style={{width:"100%",display:"flex",alignItems:"start",justifyContent:"start",marginLeft:"6%"}}>To-Thur, 3/09/2024</h5>
+                        <h2 style={{width:"100%",display:"flex",alignItems:"start",justifyContent:"start"}}>Price per night:</h2>
+                        <h5 style={{width:"100%",display:"flex",alignItems:"start",justifyContent:"start",marginLeft:"6%"}}>R450</h5>
+                    </div>
                 </div>
       </div>
         {/* Room Content (Boomk Button)*/}
-      <div className="book-room-button-container" style={{backgroundColor:"green"}}>
-                <button>Book Room</button>
+      <div className="book-room-container" >
+                <button className="book-room-button-container" style={{backgroundColor:"#03327C",color:"white"}} onClick={()=>navigate("/book-room")}>Book Room</button>
       </div>
 
       {/* Footer */}

@@ -5,21 +5,87 @@
     background-size:cover;
 }
 
-.room-main-content{
-    width:99vw;
-    display:flex;
+.room-main-content {
+    width: 100%; /* Use 100% instead of vw for more consistent layout */
+    display: flex;
     flex-direction: column;
-    gap:70px;
+    gap: 70px;
+    align-items: center; /* Centers the whole content horizontally */
 }
 #room-img{
-    width:50%;
-    height:100%;
+    width:95%;
+    height:34rem;
+    border-radius: 15px;
 }
 .room-imgs{
-    width:100%;
-    height:50%;
+    width:85%;
+    height:17rem;
+    border-radius: 15px;
 }
-.room-img-container{
+.imgs-room{
     display:flex;
+    flex-direction:column;
+    /* gap:12%; */
+}
+.room-img-container, .room-info-container {
+    width: 95%; /* Adjust width to fit the content and avoid overflow */
+    display: flex;
     flex-direction: row;
+    align-items: center; /* Vertically centers the content */
+    justify-content: center; /* Horizontally centers the content */
+    gap: 2%;
+    border-radius: 25px;
+}
+.room-img-container img, .room-info-container .about-the-room-container, .room-info-container, .facilities-container {
+    margin: auto; /* Ensures internal centering for images and divs */
+}.imgs-room {
+    display: flex;
+    flex-direction: column;
+}
+
+#room-img, .room-imgs {
+    border-radius: 15px;
+}
+#room-img:hover,.room-imgs:hover{
+     transform: scale(1.1);
+}
+
+.about-the-room-container{
+    width:40%;
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 25px;
+    padding:2%;
+    box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+}
+.facilities-container{
+    width:40%;
+    background-color: white;
+    padding:2%;
+    border-radius: 25px;
+    box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+    display:flex;
+    /* flex-direction:row; */
+    flex-wrap: wrap;
+}
+.facilities-container p{
+    font-size:1rem;
+    font-family:"Doppio One";
+    line-height:1.5rem;
+}
+.about-the-room-container p{
+    font-size:1.2rem;
+    font-family:"Doppio One";
+    line-height:1.5rem;
+    width:100%;
+    text-align: start;
+
+}
+.book-room-button-container{
+    /* padding:2%; */
+    width:200px;
+    height:70px;
+    font-size:20px;
+    font-weight:"bold"
 }

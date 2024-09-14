@@ -1,8 +1,29 @@
 /* Main content styles */
+
 .rooms-main-content{
     display:flex;
     flex-direction: column;
-    gap:330px;
+    gap:45px;
+}
+#sort-by-content{
+        width: 7vw;
+        height: 100%;
+        border-radius: 10%;
+        font-weight: bold;
+}
+.nav-bar{
+    height:55vh;
+}
+.next-button-container{
+    width:86%;
+    display:flex;
+    align-items: center;
+    justify-content: end;
+}
+.next-button{
+    background-color: #03327C;
+    width:10%;
+    color:white;
 }
 *{
     color:black;
@@ -15,8 +36,8 @@
     background-color: white;
     align-items: center;
     gap:8%;
-    margin-top:2%;
-    height:30%;
+    /* margin-top:5%; */
+    height:25%;
     width:55%;
     border:2px solid black;
     margin-left: 20%;
@@ -42,6 +63,12 @@ background-color:white;
 }
 .emoji{
     font-size: 40px;
+}
+#rooms-logo{
+        height:55%;
+        color: white;
+        opacity: 1;
+        filter:contrast(300%);
 }
 
 
@@ -105,5 +132,8 @@ text-align:start
     align-items: center;
     justify-content: center;
     /* height:50vh; */
-    
 }
+
+
+
+
