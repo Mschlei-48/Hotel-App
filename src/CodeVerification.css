@@ -1,6 +1,7 @@
 @media(min-width:768px){
     .verifiy-code{
         width:100vw;
+        height:100vh;
         display:flex;
         align-items: center;
         justify-content: center;
@@ -40,6 +41,7 @@
 @media(max-width:768px) and (min-width:480px){
     .verifiy-code{
         width:100vw;
+        height:100vh;
         display:flex;
         align-items: center;
         justify-content: center;
@@ -89,6 +91,7 @@
 @media(min-width:320px) and (max-width:480px){
     .verifiy-code{
         width:100vw;
+        height:100vh;
         display:flex;
         align-items: center;
         justify-content: center;
