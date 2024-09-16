@@ -59,7 +59,7 @@ function Room() {
                   opacity: "1",
                   backgroundColor: "transparent",
                 }}
-              >
+                onClick={()=>navigate("/about-us")}>
                 About Us
               </button>
             </li>
@@ -90,7 +90,7 @@ function Room() {
             </li>
           </ul>
         </div>
-        <h1 className="h1-text" style={{ color: "white" }}>Get the best deals at Serene Hotel!!</h1>
+        <h1 className="h1-text" style={{ color: "white" }}>Explore Rooml!!</h1>
       </div>
         
 

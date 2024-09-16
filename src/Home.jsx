@@ -59,7 +59,7 @@ function Home() {
                   opacity: "1",
                   backgroundColor: "transparent",
                 }}
-              >
+                onClick={()=>navigate("/about-us")}>
                 About Us
               </button>
             </li>

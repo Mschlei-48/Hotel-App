@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./BookRoom.css";
+import "./AboutUs.css";
 
-function BookRoom() {
+function AboutUs() {
   const navigate = useNavigate();
   return (
-    <div className="Book-Room-Main-Content">
+    <div className="about-us-main-content">
       {/* NavBar */}
       <div className="nav-bar">
         <div className="nav-bar-content">
@@ -57,7 +57,7 @@ function BookRoom() {
                   opacity: "1",
                   backgroundColor: "transparent",
                 }}
-              onClick={()=>navigate("/about-us")}>
+              >
                 About Us
               </button>
             </li>
@@ -89,139 +89,52 @@ function BookRoom() {
           </ul>
         </div>
         <h1 className="h1-text" style={{ color: "white" }}>
-        Reserve Your Room!!
+        <h2 style={{ fontFamily: "Doppio One",color:"white" }}>
+              "Serene Hotel: Where Tranquility Meets Luxury."
+            </h2>
         </h1>
       </div>
-      {/* RoomImages */}
-      {/* <div
-        className="bookroom-img-container"
-        style={{ backgroundColor: "white" }}
-      >
-        <div>
-          <img
-            src="./src/assets/room1.jpeg"
-            alt="No Image to Display"
-            id="bookroom-img"
-          />
-        </div>
-        <div className="bookimgs-room">
-          <div>
-            <img src="./src/assets/bathroom.jpg" className="bookroom-imgs" />
-          </div>
-          <div>
-            <img src="./src/assets/view1.jpg" className="bookroom-imgs" />
-          </div>
-        </div>
-      </div> */}
-
-      {/* Booking Details and Booking Form */}
-      <div className="Booking-Details-and-Booking-Form">
-        <div className="Booking-Details" style={{ backgroundColor: "white" }}>
-          <div className="Booking-Details-Col-1">
-            <h4>Facilities</h4>
-            <p>
-              <span>📶</span>Free Wifi
-            </p>
-            <p>
-              <span>📺</span>Television
-            </p>
-            <p>
-              <span>🐕</span>Pet-Friendly
-            </p>
-            <p>
-              <span>🏊‍♀️</span>Indoor Pool
-            </p>
-            <p>
-              <span>💪</span>Indoor Gym
-            </p>
-            <h4>Stay-length:</h4>
-            <p>1 night</p>
-            <h4>You selected</h4>
-            <p>1 room, 3 guests</p>
-          </div>
-          <div className="Booking-Details-Col-2">
-            <h4 style={{marginTop:"0"}}>Cancellation Fee</h4>
-            <p>R153.32</p>
-            <h4
-            >
-              Room Availabilty:
-            </h4>
-            <p
-            >
-              From-Wed, 2/09/2024
-            </p>
-            <p
-              
-            >
-              To-Thur, 3/09/2024
-            </p>
-            <h4
-            >
-              Price per night:
-            </h4>
-            <p
-
-            >
-              R450
-            </p>
-          </div>
+      {/* About Us Content */}
+      <div>
+      {/* <h2 style={{ fontFamily: "Doppio One" }}>
+              "Serene Hotel: Where Tranquility Meets Luxury."
+            </h2> */}
         </div>
 
-        <div className="Booking-Form">
-          <h2>Enter your details</h2>
-          <div className="Booking-Form-Cols">
-            <div className="Booking-Form-Col1">
-              <label for="name">
-                <h4>First Name:</h4>
-              </label>
-              <input className="booking-input" type="text" name="name"></input>
-              <label for="email">
-                <h4>Email:</h4>
-              </label>
-              <input className="booking-input" type="email"></input>
-              <label for="requests">
-                <h4>Special Requests:</h4>
-              </label>
-              <textarea name="requests"></textarea>
-            </div>
-            <div className="Booking-Form-Col2">
-              <label for="lastname">
-                <h4>Last Name:</h4>
-              </label>
-              <input className="booking-input" type="text" name="lastname"></input>
-              <label for="number">
-                <h4>Phone Number:</h4>
-              </label>
-              <input className="booking-input" type="text" name="number"></input>
-              <h4>Free pick-up?</h4>
-              <label  className="pick-up-label" for="pickup-yes"><h5 className="pick-up-heading">Yes</h5></label>
-              <input type="radio" value="Yes" name="pickup-yes" />
-              {/* <br></br> */}
-              <label  className="pick-up-label" for="pickup-no"><h5 className="pick-up-heading">No</h5></label>
-              <input type="radio" value="No" name="pickup-no"></input>
-            </div>
-          </div>
-          <div className="Rules">
-            <h4>Review House Rules</h4>
+      <div className="about-us-content-container">
+        <div className="about-us-image">
+          <img id="about-img" src="./src/assets/serene-hotel.jpg" alt="No Image to Display" />
+        </div>
+        <div className="about-us-content">
+          <div className="about-us-content-col2">
+          <h1>About Us</h1>
             <p>
-              Your host would like you to agree to the following house rules:
+              Welcome to Serene Hotel, a peaceful haven designed to offer you
+              the perfect blend of luxury, comfort, and relaxation. Situated in
+              a tranquil setting away from the hustle and bustle of everyday
+              life, we invite you to immerse yourself in an environment where
+              every detail is carefully curated for your well-being.
             </p>
-            <ul>
-              <li>No smoking</li>
-              <li>No parties/events</li>
-              <li>Quiet hours are between 22:00 and 07:00</li>
-              <li>Pets are not allowed</li>
-            </ul>
             <p>
-              By continuing to the next step, you are agreeing to these house
-              rules.
+              At Serene Hotel, we pride ourselves on delivering personalized
+              service with warmth and professionalism, ensuring your every need
+              is met. Whether you’re here for business or pleasure, our
+              elegantly appointed rooms, state-of-the-art amenities, and serene
+              surroundings create the ideal atmosphere for both relaxation and
+              productivity.
+            </p>
+            <p>
+              Unwind in our lush gardens, indulge in exquisite dining
+              experiences, or simply enjoy the peaceful ambiance that makes
+              Serene Hotel a true escape from the ordinary. Whether it's a
+              weekend getaway, a business trip, or a special occasion, we
+              promise to make your stay a memorable one. At Serene Hotel,
+              tranquility isn’t just a feeling—it’s a way of life.
             </p>
           </div>
         </div>
       </div>
-      <div className="final-details-container">
-        <button className="final-details-button" onClick={()=>navigate("/payment")}>Next: Final Details<span>→</span></button>
-      </div>
+
       <div className="footer-main-content">
         <div className="footer">
           <div>
@@ -280,8 +193,8 @@ function BookRoom() {
           </p>
         </div>
       </div>
-
     </div>
   );
 }
-export default BookRoom;
+
+export default AboutUs;

@@ -76,8 +76,10 @@ gap:12px;
     align-items: flex-start;
     justify-content: start;
     gap:1%;
-    height:358px;
+    height:315px;
+    /* height:100%; */
 }
+
 .Booking-Details-Col-1 h4{
     line-height:0.3rem;
 }

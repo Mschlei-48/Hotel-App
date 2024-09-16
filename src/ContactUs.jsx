@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Reservation.css";
+import "./ContactUs.css";
 
-function Reservations() {
+function ContactUs() {
   return (
-    <div className="Reservation-Main-Content">
-      {/* Nav Bar */}
+    <div className="contact-us-main-content">
+        {/* Nav Bar */}
       <div className="nav-bar">
         <div className="nav-bar-content">
           <img id="home-logo" src="./src/assets/Logo2.png" />
@@ -56,7 +56,7 @@ function Reservations() {
                   opacity: "1",
                   backgroundColor: "transparent",
                 }}
-                onClick={()=>navigate("/about-us")}>
+              >
                 About Us
               </button>
             </li>
@@ -88,15 +88,18 @@ function Reservations() {
           </ul>
         </div>
         <h1 className="h1-text" style={{ color: "white" }}>
-          View Your Reservations!!
+          <h2 style={{ fontFamily: "Doppio One", color: "white" }}>
+            Reach Out To Us
+          </h2>
         </h1>
       </div>
+                {/* Contact us content */}
 
-      {/* Your Reservation */}
-      <div>
+    <div>
+        
+    </div>
 
-      </div>
     </div>
   );
 }
-export default Reservations;
+export default ContactUs;

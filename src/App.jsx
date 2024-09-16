@@ -15,7 +15,8 @@ import Room from './Room.jsx'
 import BookRoom from './BookRoom.jsx'
 import Payment from './Payment.jsx'
 import Reservations from './Reservations.jsx'
-
+import AboutUs from './AboutUs.jsx'
+import ContactUs from './ContactUs.jsx'
 
 
 
@@ -36,6 +37,8 @@ function App() {
       <Route path="book-room" element={<BookRoom/>}/>
       <Route path="payment" element={<Payment/>}/>
       <Route path="reservations" element={<Reservations/>}/>
+      <Route path="about-us" element={<AboutUs/>}/>
+      <Route path="contact-us" element={<ContactUs/>}/>
     </Route>
     </Routes>
     </BrowserRouter>

@@ -57,7 +57,7 @@ function Payment() {
                   opacity: "1",
                   backgroundColor: "transparent",
                 }}
-              >
+                onClick={()=>navigate("/about-us")}>
                 About Us
               </button>
             </li>
@@ -89,7 +89,7 @@ function Payment() {
           </ul>
         </div>
         <h1 className="h1-text" style={{ color: "white" }}>
-          Get the best deals at Serene Hotel!!
+        Complete Booking!!
         </h1>
       </div>
 

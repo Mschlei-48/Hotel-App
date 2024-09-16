@@ -58,7 +58,7 @@ function Rooms() {
                   opacity: "1",
                   backgroundColor: "transparent",
                 }}
-              >
+                onClick={()=>navigate("/about-us")}>
                 About Us
               </button>
             </li>
@@ -89,7 +89,7 @@ function Rooms() {
             </li>
           </ul>
         </div>
-        <h1 style={{ color: "white" }}>Get the best deals at Serene Hotel!!</h1>
+        <h1 style={{ color: "white" }}>View Available Rooms!!</h1>
         <div className="dates-and-guests">
           <div
             className="check-in-container"
