@@ -1,0 +1,92 @@
+/* Main Content Styles */
+.payment-main-content{
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+}
+
+
+/* Payment and Booking Details Card Styles */
+.booking-details-and-payment-form{
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+    justify-content:center;
+    gap:3%;
+    margin:auto;
+}
+/* Booking Details Styles */
+.Payment-Booking-Details{
+    display:flex;
+    flex-direction:row;
+    align-items: flex-start;
+}
+.payment-booking-details{
+    width:30%;
+    background-color: white;
+    padding:2%;
+    box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+    border-radius:15px;
+}
+.payment-booking-details h4{
+    margin-left:0;
+}
+.Payment-Booking-Details-Col-1{
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items: start;
+    width:50%;
+
+}
+.Payment-Booking-Details-Col-1 h4,p{
+    line-height:0.1rem;
+}
+.Payment-Booking-Details-Col-2{
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items: start;
+    width:50%;
+}
+.Payment-Booking-Details-Col-2 h4,p{
+    line-height:0.1rem;
+}
+
+.Payment-Booking-Details-Col-2 h4,.Payment-Booking-Details-Col-1 h4{
+    margin-left:0;
+}
+/* Payment Info Styles */
+.card-type-img{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content: start;
+    margin:auto;
+}
+.cards{
+    width:10%;
+    margin-left:5%; 
+}
+.payment-details{
+    background-color:white;
+    width:40%;
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    padding:2%;
+    box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+    border-radius:15px;
+}
+.payment-input{
+    margin:0;
+    width:90%;
+}
+.complete-booking-button{
+    background-color:#03327C;
+    color:white;
+    width:30%;
+}
+
+

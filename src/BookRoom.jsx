@@ -140,58 +140,27 @@ function BookRoom() {
             <p>1 room, 3 guests</p>
           </div>
           <div className="Booking-Details-Col-2">
-            <h4>Cancellation Fee</h4>
+            <h4 style={{marginTop:"0"}}>Cancellation Fee</h4>
             <p>R153.32</p>
             <h4
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "start",
-                justifyContent: "start",
-              }}
             >
               Room Availabilty:
             </h4>
             <p
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "start",
-                justifyContent: "start",
-                marginLeft: "6%",
-              }}
             >
               From-Wed, 2/09/2024
             </p>
             <p
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "start",
-                justifyContent: "start",
-                marginLeft: "6%",
-              }}
+              
             >
               To-Thur, 3/09/2024
             </p>
             <h4
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "start",
-                justifyContent: "start",
-              }}
             >
               Price per night:
             </h4>
             <p
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "start",
-                justifyContent: "start",
-                marginLeft: "6%",
-              }}
+
             >
               R450
             </p>
