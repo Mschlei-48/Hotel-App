@@ -13,6 +13,7 @@ import Home from './Home.jsx'
 import Rooms from "./Rooms-Page.jsx"
 import Room from './Room.jsx'
 import BookRoom from './BookRoom.jsx'
+import Payment from './Payment.jsx'
 
 
 
@@ -32,6 +33,7 @@ function App() {
       <Route path="rooms" element={<Rooms/>}/>
       <Route path="room" element={<Room/>}/>
       <Route path="book-room" element={<BookRoom/>}/>
+      <Route path="payment" element={<Payment/>}/>
     </Route>
     </Routes>
     </BrowserRouter>

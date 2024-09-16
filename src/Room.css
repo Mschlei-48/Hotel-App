@@ -33,7 +33,7 @@
     flex-direction: row;
     align-items: center; /* Vertically centers the content */
     justify-content: center; /* Horizontally centers the content */
-    gap: 2%;
+    gap:0.3px;
     border-radius: 25px;
 }
 .room-img-container img, .room-info-container .about-the-room-container, .room-info-container, .facilities-container {

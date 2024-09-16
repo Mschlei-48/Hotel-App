@@ -3,7 +3,7 @@
 .rooms-main-content{
     display:flex;
     flex-direction: column;
-    gap:45px;
+    gap:25px;
 }
 #sort-by-content{
         width: 7vw;
@@ -96,7 +96,7 @@ background-color:white;
     width:28.5%;
     background-color:white;
     border-radius:4%;
-    height:60vh;
+    height:53vh;
 }
 .room-images{
     width:100%;

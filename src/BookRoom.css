@@ -12,24 +12,25 @@
 }
 
 #bookroom-img{
-  width:90%;
+  width:80%;
   /* height:50px; */
   margin:auto;
   border-radius: 15px;
 }
 .bookroom-imgs{
-    width:90%;
+    width:80%;
     margin:auto;
     border-radius: 15px;
 }
 .bookroom-img-container{
-    width:100%;
+    width:95%;
     display:flex;
     flex-direction:row;
     align-items: center;
     justify-content:center;
-    gap:1px;
+    gap:2%;
     border-radius: 25px;
+    margin:auto;
 }
 .bookimgs-room{
 display:flex;
@@ -39,3 +40,104 @@ gap:12px;
   /* * {
         outline: 1px solid red;
     } */
+
+.Booking-Details-and-Booking-Form{
+    display:flex;
+    flex-direction:row;
+    align-items: flex-start;
+    justify-content: center;
+    gap:3%;
+    margin:4%;
+}
+.Booking-Details{
+    display:flex;
+    flex-direction:row;
+    gap:7%;
+    width:35%;
+    /* margin-left:1%; */
+    height:100%;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+    border-radius: 7px;
+}
+
+
+.Booking-Details-Col-1{
+    display:flex;
+    flex-direction:column;
+    align-items: start;
+    justify-content: start;
+    gap:1%;
+}
+.Booking-Details-Col-2{
+    display:flex;
+    flex-direction:column;
+    align-items: start;
+    justify-content: start;
+    gap:1%;
+}
+.Booking-Details-Col-1 h4{
+    line-height:0.3rem;
+}
+.Booking-Details-Col-2 h4{
+    line-height:0.3rem;
+}
+
+
+.Booking-Form{
+    display:flex;
+    flex-direction:column;
+    background-color:white;
+    gap:5%;
+    width:50%;
+    align-items: start;
+    justify-content:start;
+    border-radius: 7px;
+    box-shadow: 2px 2px 4px 4px rgb(80, 80, 139);
+    padding:2%;
+}
+.Booking-Form-Cols{
+    display:flex;
+    flex-direction:row;
+    gap:8%;
+    width:95%;
+    
+}
+.Booking-Form-Col1,.Booking-Form-Col2{
+    width:50%;
+}
+.booking-input{
+    width:100%;
+    padding:7%;
+}
+.Booking-Form-Col1 textarea{
+    width:100%;
+    height:20%;
+
+}
+.pick-up-heading{
+    margin:0;
+}
+.pick-up-label{
+    width:5%;
+}
+.Rules li{
+    text-align:start;
+}
+
+.final-details-container{
+    width:93%;
+    display:flex;
+    justify-content:end;
+    gap:4%;
+}
+.final-details-button{
+    background-color:#03327C;
+    color:white;
+    padding:2%;
+}
+.final-details-button span{
+    color:white;
+    
+}

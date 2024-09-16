@@ -204,11 +204,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
           </div>
 
           <div className="room-cards" onClick={()=>navigate("/room")}>
@@ -224,11 +219,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
           </div>
 
           <div className="room-cards" onClick={()=>navigate("/room")}>
@@ -244,11 +234,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
           </div>
 
           <div className="room-cards" onClick={()=>navigate("/room")}>
@@ -264,9 +249,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
           </div>
           <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
@@ -281,9 +263,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
           </div>
           <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
@@ -298,9 +277,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
-            <span className="stars">⭐</span>
           </div>
 
           <div className="room-cards" onClick={()=>navigate("/room")}>
@@ -316,7 +292,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
           </div>
           <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
@@ -331,7 +306,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
           </div>
           <div className="room-cards" onClick={()=>navigate("/room")}>
             <img src="./src/assets/room1.jpeg" className="room-images" />
@@ -346,7 +320,6 @@ function Rooms() {
               <span>🧑‍🤝‍🧑</span>3 people
             </p>
             <h4>R450</h4>
-            <span className="stars">⭐</span>
           </div>
         </div>
       </div>
