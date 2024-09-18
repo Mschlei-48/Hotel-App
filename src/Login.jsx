@@ -1,28 +1,36 @@
 import {useState} from 'react'
 import "./Register.css"
 import {useNavigate} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
 import { signIn } from './authReducer/auth'
-// import loginUser from './src/firebase/firebaseAuth.js'
-// import app from './src/firebase/firebaseConfig'
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
+import app from './firebase/firebaseConfig.js'
+
 
 function Login(){
+    const auth=getAuth(app)
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
     const navigate=useNavigate()
     const dispatch=useDispatch()
-
+    // const users =useSelector(state=>state.user);
+    // console.log("Login users:",users)
     
     const handleLogin=async (e)=>{
-            dispatch(signIn(email,password)).then(()=>{
-                alert("Logged In Successfully")
-                navigate("/");
-            }).catch((error)=>{
-                console.log("Error is:",error.message)
-            });
-            
-            // alert("User logged in successfully");
+        await signInWithEmailAndPassword(auth,email,password).
+        then(()=>{
+            alert("User signed in successfully")
+            dispatch(signIn({"email":email,"passsword":password}))
+            navigate("/home")
+        }).
+        catch((error)=>{
+            console.log("Error is:",error.message)
+            if(error.message.includes("invalid-email")){
+                alert("User not registered, please register")
+            }
+        })
         }
+
     
     return(
         <div className="main-content">
@@ -41,7 +49,7 @@ function Login(){
                 <br></br>
                 <button className="submit-button" style={{fontSize:"25px",fontFamily:"Doppio One",textAlign:"center"}} onClick={()=>handleLogin()}>Login</button>
                 
-                <p style={{fontWeight:"bold"}}>Do not have an account? <a  style={{cursor:"pointer"}}>Register</a></p>
+                <p style={{fontWeight:"bold"}}>Do not have an account? <a  style={{cursor:"pointer"}} onClick={()=>navigate("/")}>Register</a></p>
             </div>
             </div>
         </div>

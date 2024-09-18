@@ -5,9 +5,13 @@ import {useNavigate} from 'react-router-dom'
 // import auth from './firebase/firebaseConfig';
 import {useSelector,useDispatch} from 'react-redux'
 import { signUp } from "./authReducer/auth"
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
+import app from './firebase/firebaseConfig.js'
 
 
 function Register(){
+    
+    const auth=getAuth(app)
     const navigate=useNavigate()
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
@@ -15,16 +19,31 @@ function Register(){
     const dispatch=useDispatch()
     const handleRegister=(()=>{
         if(password===confirmPassword){
-            dispatch(signUp(email,password))
-            navigate("/login")
+            createUserWithEmailAndPassword(auth,email,password).
+            then(()=>{
+                alert("Registered Successfully")
+                dispatch(signUp({"email":email,"password":password}))
+                navigate("/login")
+            })
+            .catch((error)=>{
+                console.log(error.message)
+                if(error.message.includes("invalid-email")){
+                    alert("Invalid Email, please enter valid email")
+                }
+                else if(error.message.includes("weak-password")){
+                    alert("Invalid password, password should at last be 6 characters")
+                }
+            })
         }
         else if(password!==confirmPassword){
             alert("Password do not match")
         }
     })
     
-    console.log("Pass:",password)
-    console.log("Conf Pass:",confirmPassword)
+    // const users =useSelector(state=>state.user);
+    // console.log(users)
+    // // console.log("Pass:",password)
+    // // console.log("Conf Pass:",confirmPassword)
 
     // const handleRegister=async()=>{
     //     try{

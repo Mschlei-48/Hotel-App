@@ -4,35 +4,30 @@ import app from '../firebase/firebaseConfig'
 import {useNavigate} from 'react-router-dom'
 
 const auth=getAuth(app)
-const navigate=useNavigate()
+
 export const authSlice=createSlice({
-    name:"auth",
+    name:"auth", 
     initialState:{
         user:{
             email:"",
-            password:""
+            password:"",
+        idLoggedIn:false
         }
     },
     reducers:{
         signUp:(state,action)=>{
-           createUserWithEmailAndPassword(auth,action.payload,action.payload).
-            then(()=>{
-                alert("Registered Successfully")
-            })
-            .catch((error)=>{
-                console.log(error.message)
-            })
+            // console.log(action.payload)
+            state.user.email=action.payload.email
+            state.user.password=action.payload.password
         },
         signIn:(state,action)=>{
-            signInWithEmailAndPassword(auth, action.payload, action.payload).then(()=>{
-                alert("Logged In Successfully")
-                navigate("/");
-            }).catch((error)=>{
-                console.log(error.message)
-            });
+            state.user.email=action.payload.email
+            state.user.password=action.payload.email
+            // console.log("Login payload:",action.payload)
+            // console.log("Login Userdata:",state.user)
         }
     }
 })
-export const {signUp,signIn}=authSlice.actions;
 
+export const {signUp,signIn}=authSlice.actions;
 export default authSlice.reducer
