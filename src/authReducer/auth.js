@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,sendPasswordResetEmail,updatePassword,sendEmailVerification} from 'firebase/auth'
 import app from '../firebase/firebaseConfig'
 import {useNavigate} from 'react-router-dom'
 
@@ -11,7 +11,7 @@ export const authSlice=createSlice({
         user:{
             email:"",
             password:"",
-        idLoggedIn:false
+        isLoggedIn:false
         }
     },
     reducers:{
@@ -23,8 +23,6 @@ export const authSlice=createSlice({
         signIn:(state,action)=>{
             state.user.email=action.payload.email
             state.user.password=action.payload.email
-            // console.log("Login payload:",action.payload)
-            // console.log("Login Userdata:",state.user)
         }
     }
 })
