@@ -9,13 +9,19 @@ function Rooms() {
 
   const { data, loading, error } = useSelector((state) => state.db);
   const dispatch = useDispatch();
+  const [checkIn,setCheckIn]=useState("")
+  const [checkOut,setCheckOut]=useState("")
+  const [filData,setFilData]=useState([])
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
   console.log(data);
-  console.log(loading);
-  console.log(error);
+  console.log("Filtered Rooms:",filData)
+
+  useEffect(()=>{
+    handleFilter()
+  },[checkIn,checkOut])
 
   const handleNavigate=((room)=>{
     navigate("/room",{
@@ -25,8 +31,29 @@ function Rooms() {
     })
   })
 
+  const convertDateToFirebaseTimestamp = (dateString) => {
+    const date = new Date(dateString);
+    const seconds = Math.floor(date.getTime() / 1000);
+    const nanoseconds = (date.getTime() % 1000) * 1000000;
+    return seconds;
+};
+
   const handleFilter=(()=>{
-    
+      const checkin=convertDateToFirebaseTimestamp(checkIn)
+      const checkout=convertDateToFirebaseTimestamp(checkOut)
+      data.map((room)=>{
+        if(checkin>=room.roomCheckIn.seconds){ 
+            setFilData([...filData,room])  
+      }
+      if(checkout<=room.roomCheckOut.seconds){
+        setFilData([...filData,room])
+      }
+      // else if(checkout<=room.roomCheckOut.seconds){
+      //   if(checkout>=room.roomCheckIn.seconds){
+      //     setFilData([...filData,room])
+      //   }   
+      // }
+      })
   })
 
   return (
@@ -126,6 +153,7 @@ function Rooms() {
               type="date"
               name="check-in"
               className="check-in-out-input"
+              onChange={(event)=>setCheckIn(event.target.value)}
             ></input>
           </div>
           <div
@@ -138,8 +166,10 @@ function Rooms() {
             <br></br>
             <input
               type="date"
-              name="check-in"
+              name="check-out"
               className="check-in-out-input"
+              min={checkIn}
+              onChange={(event)=>setCheckOut(event.target.value)}
             ></input>
           </div>
 
@@ -176,13 +206,15 @@ function Rooms() {
 
           <div classsName="rooms-container">
             <div>
-              <label className="filter-label">Rooms</label>
+              <label className="filter-label">Beds</label>
               <br></br>
               <select className="select-rooms-guests">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
+                <option>4</option>
+                <option>5</option>
               </select>
             </div>
           </div>
@@ -220,7 +252,7 @@ function Rooms() {
               return(
                   <div className="room-cards" onClick={() => handleNavigate(room)}>
                   <img src="./src/assets/room1.jpeg" className="room-images" />
-                  <h4>{room.typeOfRoom}</h4>
+                  <h4>{room.name}</h4>
                   <p>
                     <span>🚿</span>{room.numberOfBathrooms}bathrooms
                   </p>
@@ -230,7 +262,7 @@ function Rooms() {
                   <p>
                     <span>🧑‍🤝‍🧑</span>{room.numberOfBeds} bed(s)
                   </p>
-                  <h4>{room.price}</h4>
+                  <h4>R{room.price}</h4>
                 </div>
                 )
                 })}

@@ -132,7 +132,7 @@ function Payment() {
               <p>Check-in {formatFirebaseTimestamp(room.roomCheckIn.seconds,room.roomCheckIn.nanoseconds)}</p>
               <p>Check-out {formatFirebaseTimestamp(room.roomCheckOut.seconds,room.roomCheckOut.nanoseconds)}</p>
               <h4>Price per night:</h4>
-              <p>{room.price}</p>
+              <p>R{room.price}</p>
             </div>
           </div>
         </div>

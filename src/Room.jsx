@@ -17,11 +17,7 @@ function Room() {
       return date.toLocaleDateString('en-US', options).replace(',', '');
   }
   
-  // Example usage
-  const seconds = 1727528400;
-  const nanoseconds = 42000000;
-  const formattedDate = formatFirebaseTimestamp(seconds, nanoseconds);
-  console.log("Formatted:Date",formattedDate);
+
 
 
 
@@ -203,7 +199,7 @@ function Room() {
 
       {/* Room Content (Images)*/}
       <div>
-        <h2>{room.typeOfRoom}</h2>
+        <h2>{room.name}</h2>
       </div>
       <div className="room-img-container" style={{ backgroundColor: "white" }}>
         <div>
@@ -305,7 +301,7 @@ function Room() {
                 marginLeft: "6%",
               }}
             >
-              {room.price}
+              R{room.price}
             </h5>
           </div>
         </div>
