@@ -107,7 +107,7 @@ background-color:white;
 .Rooms{
     display:flex;
     flex-wrap: wrap;
-    gap:5%;
+    gap:3%;
     row-gap:45px;
 }
 .Rooms span,p{

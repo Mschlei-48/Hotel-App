@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
 import { signIn } from './authReducer/auth'
 import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
-import app from './firebase/firebaseConfig.js'
+import {app} from './firebase/firebaseConfig.js'
 
 
 function Login(){

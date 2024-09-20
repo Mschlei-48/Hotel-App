@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import { signUp } from "./authReducer/auth"
 import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
-import app from './firebase/firebaseConfig.js'
+import {app} from './firebase/firebaseConfig.js'
 
 
 function Register(){

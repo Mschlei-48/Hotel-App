@@ -1,9 +1,28 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import "./BookRoom.css";
 
 function BookRoom() {
   const navigate = useNavigate();
+  const location=useLocation()
+  console.log(location.state)
+  const room=location.state
+
+  const handleNav = () => {
+    navigate("/payment", {
+      state: location,
+    });
+  };
+
+
+      // Chnage seconds and milliseconds to format Wed, 12/09/24
+      function formatFirebaseTimestamp(seconds, nanoseconds) {
+        const timestamp = seconds * 1000 + Math.floor(nanoseconds / 1000000);
+        const date = new Date(timestamp);
+        const options = { weekday: 'short', year: '2-digit', month: '2-digit', day: '2-digit' };
+        return date.toLocaleDateString('en-US', options).replace(',', '');
+    }
+
   return (
     <div className="Book-Room-Main-Content">
       {/* NavBar */}
@@ -119,25 +138,17 @@ function BookRoom() {
         <div className="Booking-Details" style={{ backgroundColor: "white" }}>
           <div className="Booking-Details-Col-1">
             <h4>Facilities</h4>
-            <p>
-              <span>📶</span>Free Wifi
-            </p>
-            <p>
-              <span>📺</span>Television
-            </p>
-            <p>
-              <span>🐕</span>Pet-Friendly
-            </p>
-            <p>
-              <span>🏊‍♀️</span>Indoor Pool
-            </p>
-            <p>
-              <span>💪</span>Indoor Gym
-            </p>
+            <p><span>📶</span>{room.Wifi? (<span>Free Wifi</span>):(<span>No Wifi</span>)}</p>
+                    <p><span>📺</span>{room.Television? (<span>Television</span>):(<span>No Television</span>)}</p>
+                    <p><span>🐕</span>{room.petFriendly? (<span>Pet-Friendly</span>):(<span>No Pets</span>)}</p>
+                    <p><span>🏊‍♀️</span>{room.indoorPool? (<span>Indoor Pool</span>):(<span>No Pool</span>)}</p>
+                    <p><span>💪</span>Indoor Gym</p>
+                    <p><span>🚿</span>{room.numberOfBathrooms}bathroom(s)</p>
+                    <p><span>🧑‍🤝‍🧑</span>{room.numberOfBeds} bed(s)</p>
             <h4>Stay-length:</h4>
             <p>1 night</p>
             <h4>You selected</h4>
-            <p>1 room, 3 guests</p>
+            <p>1 room, {room.numberOfBeds} guests</p>
           </div>
           <div className="Booking-Details-Col-2">
             <h4 style={{marginTop:"0"}}>Cancellation Fee</h4>
@@ -148,12 +159,12 @@ function BookRoom() {
             </h4>
             <p
             >
-              From-Wed, 2/09/2024
+              Check-in {formatFirebaseTimestamp(room.roomCheckIn.seconds,room.roomCheckIn.nanoseconds)}
             </p>
             <p
               
             >
-              To-Thur, 3/09/2024
+              Check-out {formatFirebaseTimestamp(room.roomCheckOut.seconds,room.roomCheckOut.nanoseconds)}
             </p>
             <h4
             >
@@ -162,7 +173,7 @@ function BookRoom() {
             <p
 
             >
-              R450
+              R{room.price}
             </p>
           </div>
         </div>
@@ -220,7 +231,7 @@ function BookRoom() {
         </div>
       </div>
       <div className="final-details-container">
-        <button className="final-details-button" onClick={()=>navigate("/payment")}>Next: Final Details<span>→</span></button>
+        <button className="final-details-button" onClick={()=>handleNav()}>Next: Final Details<span>→</span></button>
       </div>
       <div className="footer-main-content">
         <div className="footer">

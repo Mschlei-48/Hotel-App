@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,sendPasswordResetEmail,updatePassword,sendEmailVerification} from 'firebase/auth'
-import app from '../firebase/firebaseConfig'
+import {app} from '../firebase/firebaseConfig'
 import {useNavigate} from 'react-router-dom'
 
 const auth=getAuth(app)

@@ -1,17 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "./Rooms.css";
+import { fetchData } from "./authReducer/dbSlice.js";
 
 function Rooms() {
   const navigate = useNavigate();
+
+  const { data, loading, error } = useSelector((state) => state.db);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+  console.log(data);
+  console.log(loading);
+  console.log(error);
+
+  const handleNavigate=((room)=>{
+    navigate("/room",{
+      state:{
+        room
+      }
+    })
+  })
+
+  const handleFilter=(()=>{
+    
+  })
+
   return (
     <div className="rooms-main-content">
       <div className="nav-bar">
         <div className="nav-bar-content">
-          <img
-            src="./src/assets/Logo2.png"
-            id="rooms-logo"
-          />
+          <img src="./src/assets/Logo2.png" id="rooms-logo" />
           <ul className="nav-ul">
             <li className="nav-li">
               <button
@@ -58,7 +80,8 @@ function Rooms() {
                   opacity: "1",
                   backgroundColor: "transparent",
                 }}
-                onClick={()=>navigate("/about-us")}>
+                onClick={() => navigate("/about-us")}
+              >
                 About Us
               </button>
             </li>
@@ -169,161 +192,51 @@ function Rooms() {
       {/* Filter Content */}
       <div className="rooms-filter">
         <div>
-      {/* <br></br> */}
-      <div className="filter-content">
-        <h2>Your perfect stay-cation start here!!</h2>
-        <div className="filter-sort-content">
-          <div className="filter">
-            <button className="filter-buttons">Pet friendly</button>
-            <button className="filter-buttons" style={{ marginLeft: "16px" }}>
-              Indoor Pool
-            </button>
-          </div>
-          <div className="sort">
-            <label style={{ fontWeight: "bold" }}>Sort By: </label>
-            <select id="sort-by-content"
-            >
-              <option>Ratings</option>
-              <option>Price</option>
-            </select>
-          </div>
-        </div>
-        {/* Rooms Content */}
-        <br></br>
-        <div className="Rooms">
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
-          </div>
-
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
-          </div>
-
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
-          </div>
-
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
-          </div>
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
-          </div>
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
-          </div>
-
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
-          </div>
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
-          </div>
-          <div className="room-cards" onClick={()=>navigate("/room")}>
-            <img src="./src/assets/room1.jpeg" className="room-images" />
-            <h4>Triple Room</h4>
-            <p>
-              <span>🚿</span>Three bathrooms
-            </p>
-            <p>
-              <span>📶</span>Unlimited Wifi
-            </p>
-            <p>
-              <span>🧑‍🤝‍🧑</span>3 people
-            </p>
-            <h4>R450</h4>
+          {/* <br></br> */}
+          <div className="filter-content">
+            <h2>Your perfect stay-cation start here!!</h2>
+            <div className="filter-sort-content">
+              <div className="filter">
+                <button className="filter-buttons">Pet friendly</button>
+                <button
+                  className="filter-buttons"
+                  style={{ marginLeft: "16px" }}
+                >
+                  Indoor Pool
+                </button>
+              </div>
+              <div className="sort">
+                <label style={{ fontWeight: "bold" }}>Sort By: </label>
+                <select id="sort-by-content">
+                  <option>Ratings</option>
+                  <option>Price</option>
+                </select>
+              </div>
+            </div>
+            {/* Rooms Content */}
+            <br></br>
+            <div className="Rooms">
+            {data.map((room)=>{
+              return(
+                  <div className="room-cards" onClick={() => handleNavigate(room)}>
+                  <img src="./src/assets/room1.jpeg" className="room-images" />
+                  <h4>{room.typeOfRoom}</h4>
+                  <p>
+                    <span>🚿</span>{room.numberOfBathrooms}bathrooms
+                  </p>
+                  <p>
+                    <span>📶</span>{room.Wifi? (<span>Wifi</span>):(<span>No Wifi</span>)}
+                  </p>
+                  <p>
+                    <span>🧑‍🤝‍🧑</span>{room.numberOfBeds} bed(s)
+                  </p>
+                  <h4>{room.price}</h4>
+                </div>
+                )
+                })}
+            </div>
           </div>
         </div>
-      </div>
-      </div>
       </div>
       {/* Next Button */}
       <div className="next-button-container">
@@ -382,7 +295,14 @@ function Rooms() {
             </ul>
           </div>
         </div>
-        <div style={{backgroundColor:"black",paddingTop:"2%",paddingBottom:"1%",width:"100vw"}}>
+        <div
+          style={{
+            backgroundColor: "black",
+            paddingTop: "2%",
+            paddingBottom: "1%",
+            width: "100vw",
+          }}
+        >
           <p style={{ color: "white", fontSize: "12px" }}>
             &copy; 2024 Serene Hotel, 1911 Cathcart
           </p>
