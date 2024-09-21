@@ -129,8 +129,8 @@ function Payment() {
               <h4>Cancellation Fee</h4>
               <p>R153.32</p>
               <h4>Room Availabilty:</h4>
-              <p>Check-in {formatFirebaseTimestamp(room.roomCheckIn.seconds,room.roomCheckIn.nanoseconds)}</p>
-              <p>Check-out {formatFirebaseTimestamp(room.roomCheckOut.seconds,room.roomCheckOut.nanoseconds)}</p>
+              <p>Check-in {room.roomCheckIn.formattedDate}</p>
+              <p>Check-out {room.roomCheckOut.formattedDate}</p>
               <h4>Price per night:</h4>
               <p>R{room.price}</p>
             </div>

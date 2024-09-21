@@ -159,12 +159,11 @@ function BookRoom() {
             </h4>
             <p
             >
-              Check-in {formatFirebaseTimestamp(room.roomCheckIn.seconds,room.roomCheckIn.nanoseconds)}
+              Check-in {room.roomCheckIn.formattedDate}
             </p>
             <p
-              
             >
-              Check-out {formatFirebaseTimestamp(room.roomCheckOut.seconds,room.roomCheckOut.nanoseconds)}
+              Check-out {room.roomCheckOut.formattedDate}
             </p>
             <h4
             >

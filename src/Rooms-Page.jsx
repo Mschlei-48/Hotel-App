@@ -6,22 +6,39 @@ import { fetchData } from "./authReducer/dbSlice.js";
 
 function Rooms() {
   const navigate = useNavigate();
-
+  
   const { data, loading, error } = useSelector((state) => state.db);
   const dispatch = useDispatch();
   const [checkIn,setCheckIn]=useState("")
   const [checkOut,setCheckOut]=useState("")
   const [filData,setFilData]=useState([])
+  const [guests,setGuests]=useState(0)
+  const [roomType,setRoomType]=useState("")
+  const [pet,setPet]=useState(false)
+  const [pool,setPool]=useState(false)
+  const [sort,setSort]=useState("")
+  // const [sortedData, setSortedData] = useState([]);
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
   console.log(data);
   console.log("Filtered Rooms:",filData)
+  console.log("checkIn:",checkIn)
+ 
 
   useEffect(()=>{
-    handleFilter()
+    handleFilterDate()
+    
   },[checkIn,checkOut])
+
+  useEffect(()=>{
+    handleFilterGeneral()
+  },[pool,pet,guests,roomType])
+
+  useEffect(() => {
+    sortRooms();
+  }, [sort, data]);
 
   const handleNavigate=((room)=>{
     navigate("/room",{
@@ -31,30 +48,67 @@ function Rooms() {
     })
   })
 
-  const convertDateToFirebaseTimestamp = (dateString) => {
-    const date = new Date(dateString);
-    const seconds = Math.floor(date.getTime() / 1000);
-    const nanoseconds = (date.getTime() % 1000) * 1000000;
-    return seconds;
+function formatFirebaseTimestamp(firebaseTimestamp) {
+  const date = new Date(firebaseTimestamp.seconds * 1000);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so add 1
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}/${month}/${day}`;
+}
+
+
+const sortRooms = () => {
+  const sortedRooms = [...data]; // Create a copy of data to avoid mutating the original array
+  sortedRooms.sort((a, b) => {
+    if (sort === "ratings") {
+      return b.ratings - a.ratings; // Sort by ratings in descending order
+    } else if (sort === "price") {
+      return a.price - b.price; // Sort by price in ascending order
+    }
+    return 0; // Default case, no sorting
+  });
+
+  setFilData(sortedRooms);
 };
 
-  const handleFilter=(()=>{
-      const checkin=convertDateToFirebaseTimestamp(checkIn)
-      const checkout=convertDateToFirebaseTimestamp(checkOut)
-      data.map((room)=>{
-        if(checkin>=room.roomCheckIn.seconds){ 
-            setFilData([...filData,room])  
-      }
-      if(checkout<=room.roomCheckOut.seconds){
-        setFilData([...filData,room])
-      }
-      // else if(checkout<=room.roomCheckOut.seconds){
-      //   if(checkout>=room.roomCheckIn.seconds){
-      //     setFilData([...filData,room])
-      //   }   
-      // }
-      })
+const handleFilterDate = () => {
+  const filteredRooms = data.filter((room) => {
+    const roomCheckIn = formatFirebaseTimestamp(room.roomCheckIn);
+    const roomCheckOut = formatFirebaseTimestamp(room.roomCheckOut);
+
+    // Convert room and user check-in/out dates to JavaScript Date objects
+    const RoomCheckIn = new Date(roomCheckIn);
+    const RoomCheckOut = new Date(roomCheckOut);
+    const CheckIn = new Date(checkIn);  // User's check-in date
+    const CheckOut = new Date(checkOut);  // User's check-out date
+
+    // Check if the room is available for the desired date range
+    // Room's check-in should be <= user's check-in AND room's check-out should be >= user's check-out
+    const isRoomAvailable = (RoomCheckIn <= CheckIn && RoomCheckOut >= CheckOut) || 
+                            (CheckIn >= RoomCheckIn && CheckIn <= RoomCheckOut) || 
+                            (CheckOut >= RoomCheckIn && CheckOut <= RoomCheckOut);
+
+    // Check if the room has the required number of beds for guests
+    // const hasRequiredBeds = room.numberOfBeds === guests;
+
+    return isRoomAvailable;
+  });
+  // Update the filtered data state once after filtering all rooms
+  setFilData(filteredRooms);
+};
+
+const handleFilterGeneral=(()=>{
+  const filteredRooms=data.filter((room)=>{
+    const filRooms=(room.numberOfBeds==guests || room.numberOfBeds>guests)||
+                    (room.typeOfRoom===roomType)||
+                    (room.petFriendly===pet)||
+                    (room.indoorPool===pool)
+    return filRooms;
   })
+  setFilData(filteredRooms)
+  console.log("Secod Filtering:",filteredRooms)
+})
+
 
   return (
     <div className="rooms-main-content">
@@ -177,7 +231,7 @@ function Rooms() {
             <div>
               <label className="filter-label">Guests</label>
               <br></br>
-              <select className="select-rooms-guests">
+              <select className="select-rooms-guests" onChange={(event)=>setGuests(event.target.value)}>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -193,18 +247,17 @@ function Rooms() {
             <div>
               <label className="filter-label">RoomType</label>
               <br></br>
-              <select className="select-rooms-guests">
+              <select className="select-rooms-guests" onChange={(event)=>setRoomType(event.target.value)}>
                 <option>Family Queen Room</option>
                 <option>Single Room</option>
                 <option>King Room</option>
                 <option>Triple Room</option>
-                <option>Suite</option>
                 <option>Quad Room</option>
               </select>
             </div>
           </div>
 
-          <div classsName="rooms-container">
+          {/* <div classsName="rooms-container">
             <div>
               <label className="filter-label">Beds</label>
               <br></br>
@@ -217,7 +270,7 @@ function Rooms() {
                 <option>5</option>
               </select>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <br></br>
@@ -229,43 +282,66 @@ function Rooms() {
             <h2>Your perfect stay-cation start here!!</h2>
             <div className="filter-sort-content">
               <div className="filter">
-                <button className="filter-buttons">Pet friendly</button>
+                <button className="filter-buttons" onClick={()=>setPet(true)}>Pet friendly</button>
                 <button
                   className="filter-buttons"
                   style={{ marginLeft: "16px" }}
+                  onClick={()=>setPool(true)}
                 >
                   Indoor Pool
                 </button>
               </div>
               <div className="sort">
                 <label style={{ fontWeight: "bold" }}>Sort By: </label>
-                <select id="sort-by-content">
-                  <option>Ratings</option>
-                  <option>Price</option>
+                <select id="sort-by-content" onChange={(event)=>setSort(event.target.value)}>
+                  <option value="ratings">Ratings</option>
+                  <option value="price">Price</option>
                 </select>
               </div>
             </div>
             {/* Rooms Content */}
             <br></br>
             <div className="Rooms">
-            {data.map((room)=>{
-              return(
-                  <div className="room-cards" onClick={() => handleNavigate(room)}>
-                  <img src="./src/assets/room1.jpeg" className="room-images" />
-                  <h4>{room.name}</h4>
-                  <p>
-                    <span>🚿</span>{room.numberOfBathrooms}bathrooms
-                  </p>
-                  <p>
-                    <span>📶</span>{room.Wifi? (<span>Wifi</span>):(<span>No Wifi</span>)}
-                  </p>
-                  <p>
-                    <span>🧑‍🤝‍🧑</span>{room.numberOfBeds} bed(s)
-                  </p>
-                  <h4>R{room.price}</h4>
-                </div>
-                )
-                })}
+              {filData.length==0?(
+                            data.map((room)=>{
+                              return(
+                                  <div className="room-cards" onClick={() => handleNavigate(room)}>
+                                  <img src="./src/assets/room1.jpeg" className="room-images" />
+                                  <h4>{room.name}</h4>
+                                  <p>
+                                    <span>🚿</span>{room.numberOfBathrooms}bathrooms
+                                  </p>
+                                  <p>
+                                    <span>📶</span>{room.Wifi? (<span>Wifi</span>):(<span>No Wifi</span>)}
+                                  </p>
+                                  <p>
+                                    <span>🧑‍🤝‍🧑</span>{room.numberOfBeds} bed(s)
+                                  </p>
+                                  <h4>R{room.price}</h4>
+                                </div>
+                                )
+                                })
+              ):(
+                filData.map((room)=>{
+                  return(
+                      <div className="room-cards" onClick={() => handleNavigate(room)}>
+                      <img src="./src/assets/room1.jpeg" className="room-images" />
+                      <h4>{room.name}</h4>
+                      <p>
+                        <span>🚿</span>{room.numberOfBathrooms}bathrooms
+                      </p>
+                      <p>
+                        <span>📶</span>{room.Wifi? (<span>Wifi</span>):(<span>No Wifi</span>)}
+                      </p>
+                      <p>
+                        <span>🧑‍🤝‍🧑</span>{room.numberOfBeds} bed(s)
+                      </p>
+                      <h4>R{room.price}</h4>
+                    </div>
+                    )
+                    })
+              )}
+
             </div>
           </div>
         </div>

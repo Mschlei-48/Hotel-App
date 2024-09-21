@@ -1,28 +1,84 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./Room.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Room() {
+
+
   const navigate = useNavigate();
   const location = useLocation();
   console.log("location is:", location.state.room);
   const room = location.state.room;
   const [edit, setEdit] = useState(false);
+  const [checkIn,setCheckIn]=useState("")
+  const [checkOut,setCheckOut]=useState("")
 
-    // Chnage seconds and milliseconds to format Wed, 12/09/24
+  const [extractCheckIn,setExtractCheckIn]=useState()
+  const [extractCheckOut,setExtractCheckOut]=useState()
+
+  useEffect(()=>{
+    console.log("Changed Room:",room)
+    console.log("Check In:",checkIn)
+    console.log("Check Out:",checkOut)
+    if(checkIn=="" && checkOut==""){
+      room.roomCheckIn.formattedDate=formatFirebaseTimestamp(room.roomCheckIn.seconds,room.roomCheckIn.nanoseconds)
+      room.roomCheckOut.formattedDate=formatFirebaseTimestamp(room.roomCheckOut.seconds,room.roomCheckOut.nanoseconds)
+      setExtractCheckIn(room.roomCheckIn.formattedDate)
+      setExtractCheckOut(room.roomCheckOut.formattedDate)
+      console.log("ëxtract:",extractCheckIn)
+      console.log("ëxtract:",extractCheckOut)
+    }
+    
+  },[checkIn,checkOut])
+
+
+
+
+
+    // Change seconds and milliseconds to format Wed, 12/09/24
     function formatFirebaseTimestamp(seconds, nanoseconds) {
       const timestamp = seconds * 1000 + Math.floor(nanoseconds / 1000000);
       const date = new Date(timestamp);
       const options = { weekday: 'short', year: '2-digit', month: '2-digit', day: '2-digit' };
-      return date.toLocaleDateString('en-US', options).replace(',', '');
-  }
+      return date.toLocaleDateString('en-US', options).replace(',', ''); // Return the formatted date
+    }
   
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+  
+    // Specify options for the format you need
+    const options = { 
+      weekday: 'short',   // Abbreviated day of the week (e.g., Wed)
+      year: '2-digit',    // Last two digits of the year
+      month: '2-digit',   // Two-digit month
+      day: '2-digit'      // Two-digit day of the month
+    };
+  
+    // Format the date and remove the comma
+    return date.toLocaleDateString('en-US', options).replace(',', '');
+  }
+
+
+
+const handleBookingDate=(()=>{
+  if(checkIn!=="" & checkOut!==""){
+    const CheckIn=formatDate(checkIn)
+    const CheckOut=formatDate(checkOut)
+    room.roomCheckIn.formattedDate=CheckIn;
+    room.roomCheckOut.formattedDate=CheckOut;
+    console.log("Came here")
+    setExtractCheckIn(room.roomCheckIn.formattedDate)
+    setExtractCheckOut(room.roomCheckOut.formattedDate)
+  }
+   
+ 
+})
 
 
 
 
 
-
+// console.log("Testing:",handleDisplayDate()[1])
   const handleNav = () => {
     navigate("/book-room", {
       state: room,
@@ -51,6 +107,7 @@ function Room() {
               name="check-in"
               className="check-in-out-input"
               style={{ width: "90%" }}
+              onChange={(event)=>setCheckIn(event.target.value)}
             ></input>
           </div>
           <div
@@ -67,14 +124,15 @@ function Room() {
             <br></br>
             <input
               type="date"
-              name="check-in"
+              name="check-out"
               className="check-in-out-input"
               style={{ width: "90%" }}
+              onChange={(event)=>setCheckOut(event.target.value)}
             ></input>
           </div>
         </div>
       <button onClick={()=>setEdit(false)}>Cancel</button>
-      <button onClick={()=>setEdit(false)}>Save</button>
+      <button onClick={()=>{setEdit(false);handleBookingDate()}}>Save</button>
       </>
       );
     } else if (edit == false) {
@@ -89,7 +147,8 @@ function Room() {
               marginLeft: "6%",
             }}
           >
-            Check-in- {formatFirebaseTimestamp(room.roomCheckIn.seconds,room.roomCheckIn.nanoseconds)}
+            Check-in- {extractCheckIn}
+            {/* {formatFirebaseTimestamp(room.roomCheckIn.seconds,room.roomCheckIn.nanoseconds)} */}
           </h5>
           <h5
             style={{
@@ -100,7 +159,8 @@ function Room() {
               marginLeft: "6%",
             }}
           >
-            Check-out- {formatFirebaseTimestamp(room.roomCheckOut.seconds,room.roomCheckOut.nanoseconds)}
+            Check-out- {extractCheckOut}
+            {/* {formatFirebaseTimestamp(room.roomCheckOut.seconds,room.roomCheckOut.nanoseconds)} */}
           </h5>
           <a onClick={() => setEdit(true)}>Edit</a>
         </div>
