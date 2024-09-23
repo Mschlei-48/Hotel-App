@@ -8,7 +8,22 @@ function BookRoom() {
   console.log(location.state)
   const room=location.state
 
+  const [firstName,setFirstName]=useState("")
+  const [lastName,setLastName]=useState("")
+  const [email,setEmail]=useState("")
+  const [number,setNUmber]=useState("")
+  const [specialReq,setSpecialReq]=useState("")
+  const [pickup,setPickup]=useState("")
+
   const handleNav = () => {
+
+    room.firstName=firstName;
+    room.lastName=lastName;
+    room.email=email;
+    room.number=number;
+    room.specialRequest=specialReq;
+    room.pickup=pickup;
+
     navigate("/payment", {
       state: location,
     });
@@ -184,31 +199,31 @@ function BookRoom() {
               <label for="name">
                 <h4>First Name:</h4>
               </label>
-              <input className="booking-input" type="text" name="name"></input>
+              <input className="booking-input" type="text" name="name" onChange={(event)=>setFirstName(event.target.value)}></input>
               <label for="email">
                 <h4>Email:</h4>
               </label>
-              <input className="booking-input" type="email"></input>
+              <input className="booking-input" type="email" onChange={(event)=>setEmail(event.target.value)}></input>
               <label for="requests">
                 <h4>Special Requests:</h4>
               </label>
-              <textarea name="requests"></textarea>
+              <textarea name="requests" onChange={(event)=>setSpecialReq(event.target.value)}></textarea>
             </div>
             <div className="Booking-Form-Col2">
               <label for="lastname">
                 <h4>Last Name:</h4>
               </label>
-              <input className="booking-input" type="text" name="lastname"></input>
+              <input className="booking-input" type="text" name="lastname" onChange={(event)=>setLastName(event.target.value)}></input>
               <label for="number">
                 <h4>Phone Number:</h4>
               </label>
-              <input className="booking-input" type="text" name="number"></input>
+              <input className="booking-input" type="text" name="number" onChange={(event)=>setNUmber(event.target.value)}></input>
               <h4>Free pick-up?</h4>
               <label  className="pick-up-label" for="pickup-yes"><h5 className="pick-up-heading">Yes</h5></label>
               <input type="radio" value="Yes" name="pickup-yes" />
               {/* <br></br> */}
               <label  className="pick-up-label" for="pickup-no"><h5 className="pick-up-heading">No</h5></label>
-              <input type="radio" value="No" name="pickup-no"></input>
+              <input type="radio" value="No" name="pickup-no" onChange={(event)=>setPickup(event.target.value)}></input>
             </div>
           </div>
           <div className="Rules">

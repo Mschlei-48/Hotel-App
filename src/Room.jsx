@@ -13,6 +13,8 @@ function Room() {
   const [checkIn,setCheckIn]=useState("")
   const [checkOut,setCheckOut]=useState("")
 
+  const today = new Date().toISOString().slice(0, 10);
+
   const [extractCheckIn,setExtractCheckIn]=useState()
   const [extractCheckOut,setExtractCheckOut]=useState()
 
@@ -107,12 +109,12 @@ const handleBookingDate=(()=>{
               name="check-in"
               className="check-in-out-input"
               style={{ width: "90%" }}
+              min={today}
               onChange={(event)=>setCheckIn(event.target.value)}
             ></input>
           </div>
           <div
             className="check-out-container"
-            // style={{ boderRight: "5px solid black" }}
           >
             <label
               for="check-out"
@@ -126,6 +128,7 @@ const handleBookingDate=(()=>{
               type="date"
               name="check-out"
               className="check-in-out-input"
+              min={checkIn}
               style={{ width: "90%" }}
               onChange={(event)=>setCheckOut(event.target.value)}
             ></input>

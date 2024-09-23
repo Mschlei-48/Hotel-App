@@ -1,9 +1,14 @@
-.Nav-Bar{
-    height:40vh;
-    background-image: url("./src/assets/nav-image.jpg");
+/* .Nav-Bar{
+    color:black;
+    width:100vw;
+    height:40vh; */
+    /* background-image: url("./src/assets/nav-image.jpg");
     background-repeat: no-repeat;
-    background-size:cover;
-}
+    background-size:cover; */
+/* }
+.nav-li{
+    color:black;
+} */
 
 .room-main-content {
     width: 100%; /* Use 100% instead of vw for more consistent layout */

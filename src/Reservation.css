@@ -1,3 +1,27 @@
 .Reservation-Main-Content{
     width:100vw;
+    display:flex;
+    flex-direction:column;
+    gap:50px;
+}
+.reservations-container{
+    /* border:2px solid black; */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+#reservation-inner-container{
+    display:flex;
+    flex-direction:column;
+    align-items:start;
+    justify-content:start;
+}
+p{
+    margin:0;
+    width:100%;
+    line-height: 1.5rem;
+    display:flex;
+    align-items:start;
+    justify-content: start;
+    padding-left:5%;
 }

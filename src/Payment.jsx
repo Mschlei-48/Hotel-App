@@ -9,6 +9,11 @@ function Payment() {
     const room=location.state.state
     console.log("Room:",room)
 
+    const [cardHolderName,setCardHolderName]=useState("")
+    const [cardNumber,setCardNumber]=useState("")
+    const [cardExpiry,setCardExpiry]=useState("")
+    const [cvc,setCvc]=useState("")
+
 
     // Chnage seconds and milliseconds to format Wed, 12/09/24
     function formatFirebaseTimestamp(seconds, nanoseconds) {
@@ -19,6 +24,18 @@ function Payment() {
   }
 
 
+  const handleNavData=(()=>{
+
+    room.cardHolderName=cardHolderName;
+    room.cardNUmber=cardNumber;
+    room.cardExpiry=cardExpiry;
+    room.cvc=cvc;
+    navigate("/reservations",{
+      state:{
+        room
+      }
+    })
+  })
   return (
     <div className="payment-main-content">
       {/* NavBar */}
@@ -154,19 +171,19 @@ function Payment() {
 
           <div className="payment-form">
             <h4>Card holder's name</h4>
-            <input className="payment-input" type="text"></input>
+            <input className="payment-input" type="text" onChange={(event)=>setCardHolderName(event.target.value)}></input>
             <h4>Card number</h4>
-            <input className="payment-input" type="text"></input>
+            <input className="payment-input" type="text" onChange={(event)=>setCardNumber(event.target.value)}></input>
             <div>
               <h4>Expiry date</h4>
-              <input className="payment-input"type="text" placeholder="MM/YY"></input>
+              <input className="payment-input"type="text" placeholder="MM/YY" onChange={(event)=>setCardExpiry(event.target.value)}></input>
               <h4>CVC</h4>
-              <input className="payment-input" type="text"></input>
+              <input className="payment-input" type="text" onChange={(event)=>setCvc(event.target.value)}></input>
             </div>
           </div>
           <div>
             <br></br>
-            <button className="complete-booking-button" onClick={()=>navigate("/reservations")}>
+            <button className="complete-booking-button" onClick={()=>handleNavData()}>
               <span>🔒</span>Complete Booking
             </button>
           </div>
