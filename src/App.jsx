@@ -17,13 +17,23 @@ import Payment from './Payment.jsx'
 import Reservations from './Reservations.jsx'
 import AboutUs from './AboutUs.jsx'
 import ContactUs from './ContactUs.jsx'
+import Checkout from './Checkout.jsx'
+
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 
 
 function App() {
 
+  const initialOptions = {
+    clientId: "",
+    currency: "USD",
+    intent: "capture",
+    };
+
   return (
     <>
+    <PayPalScriptProvider options={initialOptions}>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout/>}>
@@ -36,13 +46,15 @@ function App() {
       <Route path="rooms" element={<Rooms/>}/>
       <Route path="room" element={<Room/>}/>
       <Route path="book-room" element={<BookRoom/>}/>
-      <Route path="payment" element={<Payment/>}/>
+      {/* <Route path="payment" element={<Payment/>}/> */}
       <Route path="reservations" element={<Reservations/>}/>
       <Route path="about-us" element={<AboutUs/>}/>
       <Route path="contact-us" element={<ContactUs/>}/>
+      <Route path="payment" element={<Checkout/>}/>
     </Route>
     </Routes>
     </BrowserRouter>
+    </PayPalScriptProvider>
     </>
   )
 }

@@ -1,0 +1,13 @@
+.checkout{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+#inside-div{
+    /* border:2px solid black; */
+    padding:90px;
+    background-color: white;
+    border-radius: 5px;
+}
