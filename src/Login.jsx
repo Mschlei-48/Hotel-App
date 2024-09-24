@@ -21,7 +21,13 @@ function Login(){
         then(()=>{
             alert("User signed in successfully")
             dispatch(signIn({"email":email,"passsword":password}))
-            navigate("/home")
+            if(email==="admin@gmail.com"){
+                navigate("/admin")
+            }
+            else{
+                navigate("/home")
+            }
+
         }).
         catch((error)=>{
             console.log("Error is:",error.message)

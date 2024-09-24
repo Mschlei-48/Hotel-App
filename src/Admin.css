@@ -1,0 +1,73 @@
+.admin-main-content{
+    display:flex;
+    flex-direction: column;
+    padding-top: 4%;
+    gap:35px;
+    width:100vw;
+}
+.add-book{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    gap:12px;
+}
+.admin-nav-bar{
+    /* border:2px solid; */
+    width:30%;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    gap:35px;
+}
+.admin-nav-bar button{
+    width:205px;
+    padding:4%;
+    background-color: #03327C;
+    color:white;
+}
+
+.booked_rooms-content{
+    background-color: white;
+    width:50%;
+    border-radius: 15px;
+}
+.booked_rooms-content th{
+    font-size:0.7rem;
+}
+.booked_rooms-content td{
+    font-size:0.6rem;
+    
+}
+
+.add-room-outer-div{
+    position:fixed;
+    /* position:fixed; */
+    width:100%;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+    right:0px;
+    top:0px;
+    z-index:1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+.add-room-outer-div input{
+    width:40%;
+    padding:1%;
+}
+.add-room-outer-div textarea{
+    width:40%;
+    padding:1%;
+}
+
+.add-room-fomr-div{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
