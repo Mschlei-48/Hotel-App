@@ -2,8 +2,30 @@ import React, { useState } from 'react';
 import './Checkout.css';
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useNavigate,useLocation } from "react-router-dom";
+import {doc,setDoc,addDoc,collection} from "firebase/firestore"
+import { db } from "./firebase/firebaseConfig";
+
 
 const Checkout = () => {
+
+    // Push data to firestore after the person checks out
+    // Add data to firestore
+    const AddToFireStrore=async (room)=>{
+        await addDoc(collection(db,"Bookings"),{
+        "Firstname":room.firstName,
+        "Lastname":room.lastName,
+        "Email":room.email,
+        "Number":room.number,
+        "Price":room.price,
+        "roomCheckIn":room.roomCheckIn,
+        "roomCheckOut":room.roomCheckOut,
+        "specialRequests":room.specialRequest,
+        "roomType":room.typeOfRoom,
+        "Paid":"Yes"
+        })
+    }
+
+
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
     const [currency, setCurrency] = useState(options.currency);
 
@@ -36,13 +58,15 @@ const Checkout = () => {
             console.log(details)
             alert(`Transaction completed by ${name}`);
             room.paymentDetails=details
+            AddToFireStrore(room)
+
         });
     }
 
     const location=useLocation()
     
     const room=location.state.state
-    // console.log("Checkout Info:",room)
+    console.log("Checkout Info:",room)
     return (
         
         <div className="checkout">
