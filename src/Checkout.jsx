@@ -4,27 +4,31 @@ import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useNavigate,useLocation } from "react-router-dom";
 import {doc,setDoc,addDoc,collection} from "firebase/firestore"
 import { db } from "./firebase/firebaseConfig";
+import {AddToFireStrore} from './authReducer/BookingSlice.js'
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 
 const Checkout = () => {
-
     // Push data to firestore after the person checks out
     // Add data to firestore
-    const AddToFireStrore=async (room)=>{
-        await addDoc(collection(db,"Bookings"),{
-        "Firstname":room.firstName,
-        "Lastname":room.lastName,
-        "Email":room.email,
-        "Number":room.number,
-        "Price":room.price,
-        "roomCheckIn":room.roomCheckIn,
-        "roomCheckOut":room.roomCheckOut,
-        "specialRequests":room.specialRequest,
-        "roomType":room.typeOfRoom,
-        "Paid":"Yes"
-        })
-    }
-
+    // const AddToFireStrore=async (room)=>{
+    //     await addDoc(collection(db,"Bookings"),{
+    //     "Firstname":room.firstName,
+    //     "Lastname":room.lastName,
+    //     "Email":room.email,
+    //     "Number":room.number,
+    //     "Price":room.price,
+    //     "roomCheckIn":room.roomCheckIn,
+    //     "roomCheckOut":room.roomCheckOut,
+    //     "specialRequests":room.specialRequest,
+    //     "roomType":room.typeOfRoom,
+    //     "Paid":"Yes"
+    //     })
+    // }
+    const dispatchs=useDispatch()
+    const {data,loading,error}=useSelector((state)=>state.booking)
 
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
     const [currency, setCurrency] = useState(options.currency);
@@ -58,7 +62,7 @@ const Checkout = () => {
             console.log(details)
             alert(`Transaction completed by ${name}`);
             room.paymentDetails=details
-            AddToFireStrore(room)
+            AddToFireStrore(room,dispatchs)
 
         });
     }
@@ -87,6 +91,8 @@ const Checkout = () => {
                 </div>
             )}
             </div>
+            {loading===true? (<h1>Loading...</h1>):(<></>)}
+             {error&&(<h1>{error}</h1>)}
         </div>
     );
 }

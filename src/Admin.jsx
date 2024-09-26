@@ -6,7 +6,6 @@ import { db } from "./firebase/firebaseConfig";
 
 function Admin() {
 
-  
   useEffect(()=>{
     fetchDataFirestore()
   },[])
@@ -24,15 +23,7 @@ function Admin() {
     }
   }
 
-
-
-
-
-
   const handleAddRoom = () => {
-    // setRooms([...rooms,{"room":room,"name":name,"checkin":checkIn,"checkout":checkOut,"price":price,"request":request,
-    //     "pickup":pickup
-    // }])
     setOpenModal(false)
   };
   const [rooms,setRooms]=useState([])
@@ -44,11 +35,11 @@ function Admin() {
   const [request,setRequest]=useState("")
   const [pickup,setPickup]=useState("")
   const [approve,setApprove]=useState("")
-
   const [openModal,setOpenModal]=useState(false)
   // const [closeModal,setCloseModal]=useState(false)
 
 
+  console.log(rooms)
 
   return (
     <div className="admin-main-content">

@@ -32,6 +32,8 @@ export const { setLoading, setData, setError } = dbSlice.actions
 
 export default dbSlice.reducer
 
+
+
 export const fetchData = () => async (dispatch) => {
     dispatch(setLoading());
     try {
