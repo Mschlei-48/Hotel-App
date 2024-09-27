@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDocs, collection, doc } from "firebase/firestore";
+import {doc,setDoc,addDoc,collection,getDocs} from "firebase/firestore"
 import { db } from "../firebase/firebaseConfig";
 
 const initialState={
@@ -52,4 +52,41 @@ export const fetchDataFirestore=async(dispatch)=>{
     }
 
   }
+
+
+
+
+  export const AddToFireStore=async (room,dispatch)=>{
+    dispatch(setLoading())
+    try{
+        console.log("Rooms are:",{
+            "Firstname": room.Firstname,
+            "Lastname": room.Lastname,
+            "Price": room.Price,
+            "roomCheckIn": room.roomCheckIn,
+            "roomCheckOut": room.roomCheckOut,
+            "specialRequests": room.specialRequests,
+            "roomType": room.roomType,
+            "Paid": "Yes",
+            "Number": room.Number,
+            "Email": room.Email,
+            })
+        await addDoc(collection(db, "Bookings"), {
+            "Firstname": room.Firstname,
+            "Lastname": room.Lastname,
+            "Price": room.Price,
+            "roomCheckIn": room.roomCheckIn,
+            "roomCheckOut": room.roomCheckOut,
+            "specialRequests": room.specialRequests,
+            "roomType": room.roomType,
+            "Number": room.Number,
+            "Email": room.Email,
+            "Paid":room.Paid
+            });
+    }
+    catch(error){
+        dispatch(setError(error.message));
+    }
+
+}
 
