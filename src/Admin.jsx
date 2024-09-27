@@ -3,25 +3,36 @@ import './Admin.css'
 import Popup from 'reactjs-popup'
 import {doc,setDoc,addDoc,collection,getDocs} from "firebase/firestore"
 import { db } from "./firebase/firebaseConfig";
+import {useSelector,useDispatch} from "react-redux"
+import {fetchDataFirestore} from "./authReducer/AdminSlice.js"
 
 function Admin() {
 
+  const dispatch=useDispatch()
+  const {data,loading,error}=useSelector((state)=>state.admin)
   useEffect(()=>{
-    fetchDataFirestore()
+    fetchDataFirestore(dispatch)
   },[])
+  console.log("Data is:",data)
+  
+
+
+
+
   // Fetch data from Firebase
-  const fetchDataFirestore=async()=>{
-    const docSnap = await getDocs(collection(db,"Bookings"));
-    if (docSnap.docs.length>0) {
-      docSnap.docs.map((data)=>{
-        setRooms([...rooms,data.data()])
-        console.log("Rooms:",rooms)
-      })
-      console.log("Document data:", docSnap.docs);
-    } else {
-      console.log("No such document!");
-    }
-  }
+  // const fetchDataFirestore=async()=>{
+  //   setRooms([])
+  //   const docSnap = await getDocs(collection(db,"Bookings"));
+  //   if (docSnap.docs.length>0) {
+  //     docSnap.docs.map((data)=>{
+  //       setRooms([...rooms,data.data()])
+  //       console.log("Rooms:",rooms)
+  //     })
+  //     console.log("Document data:", docSnap.docs);
+  //   } else {
+  //     console.log("No such document!");
+  //   }
+  // }
 
   const handleAddRoom = () => {
     setOpenModal(false)
@@ -29,6 +40,7 @@ function Admin() {
   const [rooms,setRooms]=useState([])
   const [room,setRoom]=useState("")
   const [name,setName]=useState("")
+  const [lastName,setLastName]=useState("")
   const [checkIn,setCheckIn]=useState("")
   const [checkOut,setCheckOut]=useState("")
   const [price,setPrice]=useState("")
@@ -51,15 +63,15 @@ function Admin() {
         <div className="admin-nav-bar">
           <h3>Nav Bar</h3>
           <button>Booked Rooms</button>
-          <button onClick={()=>fetchDataFirestore()}>Get Data</button>
           <button onClick={()=>setOpenModal(true)}>Add Room</button>
 
           <Popup open={openModal} onClose={()=>setOpenModal(false)} position="center">
           <div className="add-room-outer-div">
             <div className="add-room-fomr-div">
                 <h1>Add a Room</h1>
-                <input placeholder="Enter Room Name" type="text" onChange={(event)=>setRoom(event.target.value)}></input>
-                <input placeholder="Enter Full Name" type="text" onChange={(event)=>setName(event.target.value)}></input>
+                <input placeholder="Enter Room Type" type="text" onChange={(event)=>setRoom(event.target.value)}></input>
+                <input placeholder="Enter First Name" type="text" onChange={(event)=>setName(event.target.value)}></input>
+                <input placeholder="Enter Last Name" type="text" onChange={(event)=>setLastName(event.target.value)}></input>
                 <input placeholder="Enter Check-In" type="date" onChange={(event)=>setCheckIn(event.target.value)}></input>
                 <input placeholder="Enter Check-Out" type="date" onChange={(event)=>setCheckOut(event.target.value)}></input>
                 <input placeholder="Enter Price" type="text" onChange={(event)=>setPrice(event.target.value)}></input>
@@ -87,23 +99,25 @@ function Admin() {
                     <th>Price</th>
                     <th>Requests</th>
                     <th>Pickup</th>
-                    <th>Approved</th>
+                    <th>Paid</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </thead>
                 
                 <tbody>
-                {rooms.map((room)=>{
+                {data.map((room)=>{
                   return(
                 <tr>
-                    <td>Room1</td>
-                    <td>{room.name}</td>
-                    <td>{room.checkin}</td>
-                    <td>{room.checkout}</td>
-                    <td>R{room.price}</td>
-                    <td>{room.request}</td>
-                    <td>{room.pickup}</td>
+                    <td>{room.roomType}</td>
+                    <td>{room.Firstname}{room.Lasttname}</td>
+                    <td>{room.roomCheckIn.formattedDate}</td>
+                    <td>{room.roomCheckOut.formattedDate}</td>
+                    <td>R{room.Price}</td>
+                    <td>{room.specialRequests}</td>
+                    <td>{room.Paid}</td>
                     <td>Yes</td>
                     <td><button>Edit</button></td>
+                    <td><button>Delete</button></td>
                 </tr>
                   )
                 })}
