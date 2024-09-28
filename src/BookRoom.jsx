@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate,useLocation } from "react-router-dom";
 import "./BookRoom.css";
+import {doc,setDoc,addDoc,collection,getDocs} from "firebase/firestore"
+import { db } from "./firebase/firebaseConfig";
+import {useSelector,useDispatch} from "react-redux"
+import {fetchDataFirestore} from "./authReducer/bookRoomSlice.js"
 
 function BookRoom() {
   const navigate = useNavigate();
@@ -8,19 +12,47 @@ function BookRoom() {
   console.log(location.state)
   const room=location.state
 
-  const [firstName,setFirstName]=useState("")
-  const [lastName,setLastName]=useState("")
-  const [email,setEmail]=useState("")
-  const [number,setNUmber]=useState("")
+  const [FirstName,setFirstName]=useState("")
+  const [LastName,setLastName]=useState("")
+  const [Email,setEmail]=useState("")
+  const [Number,setNUmber]=useState("")
   const [specialReq,setSpecialReq]=useState("")
   const [pickup,setPickup]=useState("")
 
+
+
+  const dispatch=useDispatch()
+  const {data,loading,error}=useSelector((state)=>state.admin)
+  console.log(data)
+  const user = JSON.parse(localStorage.getItem("user"));
+  const email=user.email
+  const number=user.number
+  const name=user.name
+
+
+  function separateName(fullName) {
+    const [firstName, lastName] = fullName.split(" ");
+    return {
+      firstName: firstName,
+      lastName: lastName || ""
+    };
+  }
+  
+  // Example usage:
+ 
+  const { firstName, lastName } = separateName(name);
+
+
+  useEffect(()=>{
+    fetchDataFirestore(dispatch)
+  },[])
+
   const handleNav = () => {
 
-    room.firstName=firstName;
-    room.lastName=lastName;
-    room.email=email;
-    room.number=number;
+    room.firstName=FirstName;
+    room.lastName=LastName;
+    room.email=Email;
+    room.number=Number;
     room.specialRequest=specialReq;
     room.pickup=pickup;
 
@@ -199,11 +231,11 @@ function BookRoom() {
               <label for="name">
                 <h4>First Name:</h4>
               </label>
-              <input className="booking-input" type="text" name="name" onChange={(event)=>setFirstName(event.target.value)}></input>
+              <input className="booking-input" type="text" name="name" value={firstName} onChange={(event)=>setFirstName(firstName)}  style={{color:"grey"}}></input>
               <label for="email">
                 <h4>Email:</h4>
               </label>
-              <input className="booking-input" type="email" onChange={(event)=>setEmail(event.target.value)}></input>
+              <input className="booking-input" type="email" value={email} onChange={(event)=>setEmail(event.target.value)} style={{color:"grey"}}></input>
               <label for="requests">
                 <h4>Special Requests:</h4>
               </label>
@@ -213,11 +245,11 @@ function BookRoom() {
               <label for="lastname">
                 <h4>Last Name:</h4>
               </label>
-              <input className="booking-input" type="text" name="lastname" onChange={(event)=>setLastName(event.target.value)}></input>
+              <input className="booking-input" type="text" name="lastname" value={lastName} onChange={(event)=>setLastName(lastName)} style={{color:"grey"}}></input>
               <label for="number">
                 <h4>Phone Number:</h4>
               </label>
-              <input className="booking-input" type="text" name="number" onChange={(event)=>setNUmber(event.target.value)}></input>
+              <input className="booking-input" type="text" name="number" value={number} onChange={(event)=>setNUmber(event.target.value)} style={{color:"grey"}}></input>
               <h4>Free pick-up?</h4>
               <label  className="pick-up-label" for="pickup-yes"><h5 className="pick-up-heading">Yes</h5></label>
               <input type="radio" value="Yes" name="pickup-yes" />

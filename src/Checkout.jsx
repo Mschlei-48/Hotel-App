@@ -49,7 +49,7 @@ const Checkout = () => {
             purchase_units: [
                 {
                     amount: {
-                        value: "8.99",
+                        value: "146.06",
                     },
                 },
             ],

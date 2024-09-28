@@ -5,12 +5,15 @@ import {doc,setDoc,addDoc,collection,getDocs} from "firebase/firestore"
 import { db } from "./firebase/firebaseConfig";
 import {useSelector,useDispatch} from "react-redux"
 import {fetchDataFirestore,AddToFireStore} from "./authReducer/AdminSlice.js"
+import {useNavigate} from "react-router-dom" 
 
 
 function Admin() {
 
   const dispatch=useDispatch()
   const {data,loading,error}=useSelector((state)=>state.admin)
+  const navigate=useNavigate()
+  
   useEffect(()=>{
     fetchDataFirestore(dispatch)
   },[])
@@ -18,19 +21,22 @@ function Admin() {
 
   
 // Fetch data from Firebase
-  // const fetchDataFirestore=async()=>{
-  //   setRooms([])
-  //   const docSnap = await getDocs(collection(db,"Bookings"));
-  //   if (docSnap.docs.length>0) {
-  //     docSnap.docs.map((data)=>{
-  //       setRooms([...rooms,data.data()])
-  //       console.log("Rooms:",rooms)
-  //     })
-  //     console.log("Document data:", docSnap.docs);
-  //   } else {
-  //     console.log("No such document!");
-  //   }
-  // }
+
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  // Specify options for the format you need
+  const options = { 
+    weekday: 'short',   // Abbreviated day of the week (e.g., Wed)
+    year: '2-digit',    // Last two digits of the year
+    month: '2-digit',   // Two-digit month
+    day: '2-digit'      // Two-digit day of the month
+  };
+
+  // Format the date and remove the comma
+  return date.toLocaleDateString('en-US', options).replace(',', '');
+}
 
   const handleAddRoom = () => {
     setOpenModal(false)
@@ -48,14 +54,15 @@ function Admin() {
   const [openModal,setOpenModal]=useState(false)
   const [number,setNumber]=useState("")
   const [email,setEmail]=useState("")
+  const today = new Date().toISOString().slice(0, 10);
   // const [closeModal,setCloseModal]=useState(false)
 
   const rooms={
     "Firstname": name,
     "Lastname": lastName,
     "Price": price,
-    "roomCheckIn": checkIn,
-    "roomCheckOut": checkOut,
+    "roomCheckIn": formatDate(checkIn),
+    "roomCheckOut": formatDate(checkOut),
     "specialRequests": request,
     "roomType": room,
     "Paid": "Yes",
@@ -66,20 +73,23 @@ function Admin() {
 
   return (
     <div className="admin-main-content">
+      <button style={{width:"10%",backgroundColor:"#03327C",color:"white",position:"fixed",top:"4%",right:"10%"}} onClick={()=>navigate("/login")}>Logout</button>
+      <br></br>
+      <br></br>
       <div className="admin-logo">
+        
         <img src="./src/assets/Logo.png" alt="No Image to Display" style={{width:"12%",height:"12%",borderRadius:"85px"}}/>
         <h1>Admin</h1>
       </div>
       <div className="add-book">
         <div className="admin-nav-bar">
           <h3>Nav Bar</h3>
-          <button>Booked Rooms</button>
           <button onClick={()=>setOpenModal(true)}>Add Room</button>
 
           <Popup open={openModal} onClose={()=>setOpenModal(false)} position="center">
           <div className="add-room-outer-div">
             <div className="add-room-fomr-div">
-                <h1 style={{color:"white"}}>Add a Room</h1>
+                <h1 style={{color:"white"}}>Add a Booking</h1>
                 <br></br>
                 <div style={{display:"flex",flexDirection:"row",width:"100%",alignItems:"flex-start",justifyContent:"center",gap:"2%"}} className="form-div">
                   <div style={{width:"40%"}}>
@@ -92,10 +102,10 @@ function Admin() {
                     <input placeholder="Enter Last Name" type="text" onChange={(event)=>setLastName(event.target.value)}></input>
                     <br></br>
                     <br></br>
-                    <input placeholder="Enter Check-In" type="date" onChange={(event)=>setCheckIn(event.target.value)}></input>
+                    <input placeholder="Enter Check-In" type="date" onChange={(event)=>setCheckIn(event.target.value)} min={today}></input>
                     <br></br>
                     <br></br>
-                    <input placeholder="Enter Check-Out" type="date" onChange={(event)=>setCheckOut(event.target.value)}></input>
+                    <input placeholder="Enter Check-Out" type="date" onChange={(event)=>setCheckOut(event.target.value)} min={checkIn}></input>
                   </div>
                   <div style={{width:"40%"}}>
                     <input placeholder="Enter Price" type="text" onChange={(event)=>setPrice(event.target.value)}></input>
@@ -118,7 +128,7 @@ function Admin() {
                   </div>
                 </div>
                 <br></br>
-                <button onClick={()=>{handleAddRoom();AddToFireStore(rooms,dispatch)}}>Add Room</button>
+                <button onClick={()=>{handleAddRoom();AddToFireStore(rooms,dispatch)}} style={{backgroundColor:"#03327C",color:"white",width:"15%",height:"auto",marginRight:"10%"}}>Submit Booking</button>
             </div>
           </div>
           </Popup>
@@ -153,8 +163,8 @@ function Admin() {
                     <td>{room.Paid}</td>
                     <td>{room.Number}</td>
                     <td>{room.Email}</td>
-                    <td><button>Edit</button></td>
-                    <td><button>Delete</button></td>
+                    <td style={{width:"5%"}}><img src="https://cdn.iconscout.com/icon/free/png-256/free-edit-icon-download-in-svg-png-gif-file-formats--pen-write-pencil-ball-study-user-interface-vol-2-pack-icons-2202989.png?f=webp&w=256" style={{width:"50%"}}/></td>
+                    <td style={{width:"5%"}}><img src="https://cdn-icons-png.flaticon.com/512/3161/3161358.png" style={{width:"50%"}}/></td>
                 </tr>
                   )
                 })}

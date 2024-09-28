@@ -267,7 +267,7 @@ const handleBookingDate=(()=>{
       <div className="room-img-container" style={{ backgroundColor: "white" }}>
         <div>
           <img
-            src="./src/assets/room1.jpeg"
+            src={room.roomImg}
             alt="No Image to Display"
             id="room-img"
           />

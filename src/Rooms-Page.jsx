@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Rooms.css";
 import { fetchData } from "./authReducer/dbSlice.js";
+const today = new Date().toISOString().slice(0, 10);
 
 function Rooms() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ function Rooms() {
   const [pet,setPet]=useState(false)
   const [pool,setPool]=useState(false)
   const [sort,setSort]=useState("")
+  const today = new Date().toISOString().slice(0, 10);
   // const [sortedData, setSortedData] = useState([]);
 
   useEffect(() => {
@@ -72,42 +74,46 @@ const sortRooms = () => {
 };
 
 const handleFilterDate = () => {
-  const filteredRooms = data.filter((room) => {
+  const filteredRooms = data.map((room) => {
     const roomCheckIn = formatFirebaseTimestamp(room.roomCheckIn);
     const roomCheckOut = formatFirebaseTimestamp(room.roomCheckOut);
 
-    // Convert room and user check-in/out dates to JavaScript Date objects
     const RoomCheckIn = new Date(roomCheckIn);
     const RoomCheckOut = new Date(roomCheckOut);
-    const CheckIn = new Date(checkIn);  // User's check-in date
-    const CheckOut = new Date(checkOut);  // User's check-out date
+    const CheckIn = new Date(checkIn);
+    const CheckOut = new Date(checkOut);
 
-    // Check if the room is available for the desired date range
-    // Room's check-in should be <= user's check-in AND room's check-out should be >= user's check-out
-    const isRoomAvailable = (RoomCheckIn <= CheckIn && RoomCheckOut >= CheckOut) || 
-                            (CheckIn >= RoomCheckIn && CheckIn <= RoomCheckOut) || 
+    const isRoomAvailable = (RoomCheckIn <= CheckIn && RoomCheckOut >= CheckOut) ||
+                            (CheckIn >= RoomCheckIn && CheckIn <= RoomCheckOut) ||
                             (CheckOut >= RoomCheckIn && CheckOut <= RoomCheckOut);
 
-    // Check if the room has the required number of beds for guests
-    // const hasRequiredBeds = room.numberOfBeds === guests;
-
-    return isRoomAvailable;
+    return {
+      ...room,
+      matchScore: isRoomAvailable ? 1 : 0, // Assign a score based on date availability
+    };
   });
-  // Update the filtered data state once after filtering all rooms
-  setFilData(filteredRooms);
+
+  setFilData(filteredRooms.sort((a, b) => b.matchScore - a.matchScore)); // Sort rooms by match score
 };
 
-const handleFilterGeneral=(()=>{
-  const filteredRooms=data.filter((room)=>{
-    const filRooms=(room.numberOfBeds==guests || room.numberOfBeds>guests)||
-                    (room.typeOfRoom===roomType)||
-                    (room.petFriendly===pet)||
-                    (room.indoorPool===pool)
-    return filRooms;
-  })
-  setFilData(filteredRooms)
-  console.log("Secod Filtering:",filteredRooms)
-})
+const handleFilterGeneral = () => {
+  const filteredRooms = data.map((room) => {
+    let matchScore = 0;
+
+    if ((room.numberOfBeds == guests || room.numberOfBeds > guests)) matchScore++;
+    if (room.typeOfRoom === roomType) matchScore++;
+    if (room.petFriendly === pet) matchScore++;
+    if (room.indoorPool === pool) matchScore++;
+
+    return {
+      ...room,
+      matchScore,
+    };
+  });
+
+  setFilData(filteredRooms.sort((a, b) => b.matchScore - a.matchScore)); // Sort rooms by match score
+  console.log("Filtered Rooms:", filteredRooms);
+};
 
 
   return (
@@ -207,6 +213,7 @@ const handleFilterGeneral=(()=>{
               type="date"
               name="check-in"
               className="check-in-out-input"
+              min={today}
               onChange={(event)=>setCheckIn(event.target.value)}
             ></input>
           </div>
@@ -306,7 +313,7 @@ const handleFilterGeneral=(()=>{
                             data.map((room)=>{
                               return(
                                   <div className="room-cards" onClick={() => handleNavigate(room)}>
-                                  <img src="./src/assets/room1.jpeg" className="room-images" />
+                                  <img src={room.roomImg} alt="No Image to Display"className="room-images" />
                                   <h4>{room.name}</h4>
                                   <p>
                                     <span>🚿</span>{room.numberOfBathrooms}bathrooms
@@ -325,7 +332,7 @@ const handleFilterGeneral=(()=>{
                 filData.map((room)=>{
                   return(
                       <div className="room-cards" onClick={() => handleNavigate(room)}>
-                      <img src="./src/assets/room1.jpeg" className="room-images" />
+                      <img src={room.roomImg} className="room-images" />
                       <h4>{room.name}</h4>
                       <p>
                         <span>🚿</span>{room.numberOfBathrooms}bathrooms

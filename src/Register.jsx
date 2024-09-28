@@ -7,6 +7,8 @@ import {useSelector,useDispatch} from 'react-redux'
 import { signUp } from "./authReducer/auth"
 import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
 import {app} from './firebase/firebaseConfig.js'
+import { db } from "./firebase/firebaseConfig";
+import {doc,setDoc,addDoc,collection,getDocs} from "firebase/firestore"
 
 
 function Register(){
@@ -15,15 +17,17 @@ function Register(){
     const navigate=useNavigate()
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
-    const [confirmPassword,setConfirmPassword]=useState("")
+    const [name,setName]=useState("")
+    const [number,setNumber]=useState("")
     const dispatch=useDispatch()
     const handleRegister=(()=>{
-        if(password===confirmPassword){
             createUserWithEmailAndPassword(auth,email,password).
             then(()=>{
                 alert("Registered Successfully")
                 dispatch(signUp({"email":email,"password":password}))
-                navigate("/login")
+                localStorage.setItem("user", JSON.stringify({"email": email, "password": password,"name":name,"number":number}));
+                AddToFireStrore()
+                navigate("/home")
             })
             .catch((error)=>{
                 console.log(error.message)
@@ -33,11 +37,10 @@ function Register(){
                 else if(error.message.includes("weak-password")){
                     alert("Invalid password, password should at last be 6 characters")
                 }
+                else if(error.message.includes("email-already-in-use")){
+                    alert("Email already in use")
+                }
             })
-        }
-        else if(password!==confirmPassword){
-            alert("Password do not match")
-        }
     })
     
     // const users =useSelector(state=>state.user);
@@ -56,21 +59,45 @@ function Register(){
     //     }
     // };
 
+    
+
+
+    const AddToFireStrore=async ()=>{
+        try{
+            await addDoc(collection(db, "Profile"), {
+                "Name": name,
+                "Email": email,
+                "Number": number,
+                });
+        }
+        catch(error){
+            console.error(error.message);
+        }
+    
+    }
+
 
     return(
         <div className="main-content">
-            <div className="form">
-            <img src="./src/assets/Logo.png" id="logo"/>  
-            <h1>Create your account</h1>
-                <br></br>
+            <div className="form" style={{height:"80%",width:"35%"}}>
+            <img src="./src/assets/Logo.png" id="logo" style={{width:"27%",height:"auto"}}/>  
+            <h2>Create your account</h2>
+                {/* <br></br> */}
                 <input name="email" type="email" placeholder="Enter Email Address" onChange={(event)=>setEmail(event.target.value)}></input>
-                <br></br>
+                {/* <br></br> */}
                 <input name="password" type="password" placeholder="Enter Password" onChange={(event)=>setPassword(event.target.value)}></input>
-                <br></br>
-                <input name="conf-password" type="password" placeholder="Confirm Password" onChange={(event)=>setConfirmPassword(event.target.value)}></input>
-                <br></br>
-                <button className="submit-button" style={{fontSize:"25px",fontFamily:"Doppio One",textAlign:"center"}} onClick={()=>handleRegister()}>Register</button>
-                <p style={{fontWeight:"bold"}}>Already have an account? <a  style={{cursor:"pointer"}} onClick={()=>navigate("/login")}>Login</a></p>
+                {/* <br></br> */}
+                <input name="name" type="text" placeholder="Enter Name" onChange={(event)=>setName(event.target.value)}></input>
+                {/* <br></br> */}
+                <input name="number" type="text" placeholder="Enter Number" onChange={(event)=>setNumber(event.target.value)}></input>
+                {/* <br></br> */}
+                <button className="submit-button" style={{fontSize:"25px",fontFamily:"Doppio One",textAlign:"center",height:"10%"}} onClick={()=>handleRegister()}>Register</button>
+                <p style={{ fontWeight: "bold", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                Already have an account? 
+                <a style={{ cursor: "pointer", marginLeft: "5px",marginBottom:"7px" }} onClick={() => { navigate("/login")}}>
+                    Login
+                </a>
+                </p>
             </div>
         </div>
     )

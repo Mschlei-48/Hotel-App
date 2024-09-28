@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import "./Register.css"
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,useLocation} from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
 import { signIn } from './authReducer/auth'
 import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
@@ -21,6 +21,7 @@ function Login(){
         then(()=>{
             alert("User signed in successfully")
             dispatch(signIn({"email":email,"passsword":password}))
+            // localStorage.setItem("user",{"email":email,"password":password})
             if(email==="admin@gmail.com"){
                 navigate("/admin")
             }
@@ -55,7 +56,7 @@ function Login(){
                 <br></br>
                 <button className="submit-button" style={{fontSize:"25px",fontFamily:"Doppio One",textAlign:"center"}} onClick={()=>handleLogin()}>Login</button>
                 
-                <p style={{fontWeight:"bold"}}>Do not have an account? <a  style={{cursor:"pointer"}} onClick={()=>navigate("/")}>Register</a></p>
+                <p style={{fontWeight:"bold",display: "flex", justifyContent: "center", alignItems: "center"}}>Do not have an account? <a  style={{cursor:"pointer",marginLeft:"5px",marginBottom:"7px"}} onClick={()=>navigate("/")}>Register</a></p>
             </div>
             </div>
         </div>
