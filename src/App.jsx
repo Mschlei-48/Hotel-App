@@ -19,7 +19,7 @@ import AboutUs from './AboutUs.jsx'
 import ContactUs from './ContactUs.jsx'
 import Checkout from './Checkout.jsx'
 import Admin from './Admin.jsx'
-
+import Profile from "./Profile.jsx"
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 
@@ -53,6 +53,7 @@ function App() {
       <Route path="contact-us" element={<ContactUs/>}/>
       <Route path="payment" element={<Checkout/>}/>
       <Route path="admin" element={<Admin/>}/>
+      <Route path="profile" element={<Profile/>}/>
     </Route>
     </Routes>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {doc,setDoc,addDoc,collection,getDocs} from "firebase/firestore"
+import {doc,setDoc,addDoc,collection,getDocs,deleteDoc} from "firebase/firestore"
 import { db } from "../firebase/firebaseConfig";
 
 const initialState={
@@ -90,3 +90,30 @@ export const fetchDataFirestore=async(dispatch)=>{
 
 }
 
+
+export const DeleteBooking=async(dispatch,id)=>{
+    try{
+        await deleteDoc(doc(db,"Bookings",id))
+        alert("Booking Deleted Successfully")
+    }
+    catch(error){
+        // alert("An Error Occured")
+        console.log(error.message)
+    }
+}
+
+export const EditBooking=async(dispatch,id,room)=>{
+    await setDoc(doc(db,"Bookings",id),{
+        "Firstname": room.Firstname,
+        "Lastname": room.Lastname,
+        "Price": room.Price,
+        "roomCheckIn": {"formattedDate":room.roomCheckIn},
+        "roomCheckOut": {"formattedDate":room.roomCheckOut},
+        "specialRequests": room.specialRequests,
+        "roomType": room.roomType,
+        "Number": room.Number,
+        "Email": room.Email,
+        "Paid":room.Paid
+
+    })
+}

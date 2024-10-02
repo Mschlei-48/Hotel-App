@@ -184,6 +184,19 @@ const handleFilterGeneral = () => {
                 Contact Us
               </button>
             </li>
+            <li>
+              <button
+                className="nav-buttons"
+                style={{
+                  color: "white",
+                  opacity: "1",
+                  backgroundColor: "transparent",
+                }}
+                onClick={()=>handleProfileNav()}
+              >
+                Profile
+              </button>
+            </li>
             <li className="nav-li">
               <button
                 className="nav-buttons"

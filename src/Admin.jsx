@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import './Admin.css'
 import Popup from 'reactjs-popup'
-import {doc,setDoc,addDoc,collection,getDocs} from "firebase/firestore"
+import {doc,setDoc,addDoc,collection,getDocs,deleteDoc} from "firebase/firestore"
 import { db } from "./firebase/firebaseConfig";
 import {useSelector,useDispatch} from "react-redux"
-import {fetchDataFirestore,AddToFireStore} from "./authReducer/AdminSlice.js"
-import {useNavigate} from "react-router-dom" 
+import {fetchDataFirestore,AddToFireStore,DeleteBooking,EditBooking} from "./authReducer/AdminSlice.js"
+import {useNavigate} from "react-router-dom"
+ 
 
 
 function Admin() {
@@ -14,13 +15,14 @@ function Admin() {
   const {data,loading,error}=useSelector((state)=>state.admin)
   const navigate=useNavigate()
   
+  console.log("Data is:",data)
   useEffect(()=>{
     fetchDataFirestore(dispatch)
   },[])
 
 
   
-// Fetch data from Firebase
+// Edit Booking data from Firebase
 
 
 function formatDate(dateString) {
@@ -83,8 +85,11 @@ function formatDate(dateString) {
       </div>
       <div className="add-book">
         <div className="admin-nav-bar">
-          <h3>Nav Bar</h3>
+          <h3>Admin Panel</h3>
+          <button onClick={()=>setOpenModal(true)}>Overview</button>
+          <button onClick={()=>setOpenModal(true)}>Add Booking</button>
           <button onClick={()=>setOpenModal(true)}>Add Room</button>
+          {/* <button onClick={()=>setOpenModal(true)}>Display Bookings</button> */}
 
           <Popup open={openModal} onClose={()=>setOpenModal(false)} position="center">
           <div className="add-room-outer-div">
@@ -153,7 +158,7 @@ function formatDate(dateString) {
                 <tbody>
                 {data.map((room)=>{
                   return(
-                <tr>
+                <tr key={room.id}>
                     <td>{room.roomType}</td>
                     <td>{room.Firstname}{room.Lasttname}</td>
                     <td>{room.roomCheckIn.formattedDate}</td>
@@ -164,7 +169,7 @@ function formatDate(dateString) {
                     <td>{room.Number}</td>
                     <td>{room.Email}</td>
                     <td style={{width:"5%"}}><img src="https://cdn.iconscout.com/icon/free/png-256/free-edit-icon-download-in-svg-png-gif-file-formats--pen-write-pencil-ball-study-user-interface-vol-2-pack-icons-2202989.png?f=webp&w=256" style={{width:"50%"}}/></td>
-                    <td style={{width:"5%"}}><img src="https://cdn-icons-png.flaticon.com/512/3161/3161358.png" style={{width:"50%"}}/></td>
+                    <td style={{width:"5%"}} onClick={()=>DeleteBooking(dispatch,room.id)}><img src="https://cdn-icons-png.flaticon.com/512/3161/3161358.png" style={{width:"50%"}}/></td>
                 </tr>
                   )
                 })}
